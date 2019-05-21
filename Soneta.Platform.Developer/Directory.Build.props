@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SonetaTargetFramework>net46</SonetaTargetFramework>
+    <MinimumVisualStudioVersion>16.0</MinimumVisualStudioVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <IsVSIXProject>true</IsVSIXProject>
+    <IsVSIXProject Condition="!Exists('source.extension.vsixmanifest')">false</IsVSIXProject>
+    <GeneratePkgDefFile>false</GeneratePkgDefFile>
+    <IncludeAssemblyInVSIXContainer>false</IncludeAssemblyInVSIXContainer>
+    <IncludeDebugSymbolsInVSIXContainer>false</IncludeDebugSymbolsInVSIXContainer>
+    <IncludeDebugSymbolsInLocalVSIXDeployment>false</IncludeDebugSymbolsInLocalVSIXDeployment>
+    <CreateVsixContainer>$(IsVSIXProject)</CreateVsixContainer>
+    <DeployExtension>false</DeployExtension>
+    <DeployVSTemplates>false</DeployVSTemplates>
+    <CopyVsixManifestToOutput>false</CopyVsixManifestToOutput>
+    <CopyBuildOutputToOutputDirectory>false</CopyBuildOutputToOutputDirectory>
+    <CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory>
+    <PackageContent>..\**</PackageContent>
+  </PropertyGroup>
+  <ItemGroup>
+    <ExcludeFromPackage Include="..\*.*" />
+    <ExcludeFromPackage Include="..\*.*\**" />
+    <ExcludeFromPackage Include="..\SonetaAddonOld\**" />
+    <ExcludeFromPackage Include="..\ItemTemplateWizard\**" />
+    <ExcludeFromPackage Include="$(PackageContent)\bin\**" />
+    <ExcludeFromPackage Include="$(PackageContent)\obj\**" />
+    <ExcludeFromPackage Include="$(PackageContent)\*.vstemplate" />
+    <ExcludeFromPackage Include="$(PackageContent)\*.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <VSTemplate Include="*.vstemplate" />
+    <VSTemplate Include="*\*.vstemplate" />
+    <None Include="*.vsixmanifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <IncludeInSolution Include="**\*.cs"/>
+    <IncludeInSolution Include="**\*.exe"/>
+    <IncludeInSolution Include="**\*.ico"/>
+    <IncludeInSolution Include="**\*.txt"/>
+    <IncludeInSolution Include="**\*.xml"/>
+    <IncludeInSolution Include="**\*.xsd"/>
+    <IncludeInSolution Include="**\*.xsx"/>
+    <IncludeInSolution Include="**\*.props"/>
+    <IncludeInSolution Include="**\*.json"/>
+    <IncludeInSolution Include="**\*.csproj" Exclude="$(MSBuildProjectName).csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <ExcludeFromSolution Include="**\bin\**" />
+    <ExcludeFromSolution Include="**\obj\**" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(EnableDefaultItems)' == 'false'">
+    <None Include="@(IncludeInSolution)" />
+    <None Remove="@(ExcludeFromSolution)" />
+  </ItemGroup>
+</Project>

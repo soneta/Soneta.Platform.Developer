@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>Soneta - PageForm</Name>
+    <Description>Komponent PageForm dla produktów firmy Soneta</Description>
+    <Icon>PageFormItemTemplate.ico</Icon>
+    <TemplateID>9911911d-83fd-4ea2-a222-0aa171d94207</TemplateID>
+    <ProjectType>CSharp</ProjectType>
+    <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <DefaultName>MyPageForm</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <References>
+      <Reference>
+        <Assembly>System</Assembly>
+      </Reference>
+    </References>
+    <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$.cs">Class.cs</ProjectItem>
+    <ProjectItem SubType="" TargetFileName="$fileinputname$.ogolne.pageform.xml" ItemType="EmbeddedResource" ReplaceParameters="true">Page.pageform.xml</ProjectItem>
+    <CustomParameters>
+      <CustomParameter Name="$pageform_xml$" Value="$fileinputname$.ogolne.pageform.xml"/>
+    </CustomParameters>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>ItemTemplateWizard, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=null</Assembly>
+    <FullClassName>ItemTemplateWizard.Wizards.PageFormItemTemplateWizard</FullClassName>
+  </WizardExtension>
+</VSTemplate>

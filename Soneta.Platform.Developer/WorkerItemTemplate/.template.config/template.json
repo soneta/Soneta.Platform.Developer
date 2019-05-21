@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Soneta",
+  "classifications": [ "Soneta", "Addon", "Item", "Worker" ],
+  "identity": "Soneta.Addon.Item.Worker",
+  "groupIdentity": "Soneta.Addon.Item.Worker",
+  "name": "Soneta Addon Item Worker",
+  "shortName": "soneta-item-worker",
+  "description": "Komponent Worker dla produktów firmy Soneta",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "sourceName": "$fileinputname$",
+  "preferNameDirectory": true,
+  "symbols": {
+    "default-namespace": {
+      "type": "bind",
+      "binding": "name",
+      "replaces": "$defaultnamespace$",
+      "dataType": "string"
+    },
+    "root-namespace": {
+      "type": "bind",
+      "binding": "name",
+      "replaces": "$rootnamespace$",
+      "dataType": "string"
+    },
+    "worker-root": {
+      "type": "bind",
+      "binding": "name",
+      "replaces": "$worker_root$",
+      "dataType": "string"
+    },
+    "worker-class": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "AddWorkerSuffix",
+      "replaces": "$worker_class$",
+      "dataType": "string"
+    },
+    "worker-paramsclass": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "AddWorkerParamsSuffix",
+      "replaces": "$worker_paramsclass$",
+      "dataType": "string"
+    },
+    "worker-register-params": {
+      "type": "parameter",
+      "dataType": "bool",
+      "defaultValue": "false",
+      "description": "Generuj parametry workera"
+    },
+    "worker-caption": {
+      "type": "parameter",
+      "replaces": "$worker_caption$",
+      "dataType": "string",
+      "description": "Tytu³ zak³adki (CaptionHtml)",
+      "isRequired": true
+    },
+    "worker-datatype": {
+      "type": "parameter",
+      "replaces": "$worker_datattype$",
+      "dataType": "string",
+      "description": "Typ danych (DataType)",
+      "isRequired": true
+    },
+    "worker-priority": {
+      "type": "parameter",
+      "replaces": "$worker_priority$",
+      "dataType": "string",
+      "description": "Priorytet (Priority)",
+      "defaultValue": "100000"
+    },
+    "$worker_registerparams$": {
+      "type": "generated",
+      "generator": "switch",
+      "dataType": "int",
+      "parameters": {
+        "cases": [
+          {
+            "condition": "worker-register-params",
+            "value": "1"
+          },
+          {
+            "condition": "!worker-register-params",
+            "value": "0"
+          }
+        ]
+      }
+    }
+  },
+  "defaultName": "MyWorker",
+  "sources": [
+    {
+      "include": "*.cs",
+      "rename": {
+        "Class.cs": "$fileinputname$Worker.cs"
+      }
+    },
+    {
+      "include": "*.xml",
+      "condition": "worker-register-params",
+      "rename": {
+        "Page.pageform.xml": "$fileinputname$WorkerParams.Ogolne.pageform.xml"
+      }
+    }
+  ],
+  "SpecialCustomOperations": {
+    "*": {
+      "operations": [
+        {
+          "type": "conditional",
+          "configuration": {
+            "if": [ "$if$" ],
+            "endif": [ "$endif$" ]
+          }
+        }
+      ]
+    }
+  },
+  "forms": {
+    "AddWorkerSuffix": {
+      "identifier": "replace",
+      "replacement": "Worker",
+      "pattern": "$"
+    },
+    "AddWorkerParamsSuffix": {
+      "identifier": "replace",
+      "replacement": "WorkerParams",
+      "pattern": "$"
+    }
+  }
+}

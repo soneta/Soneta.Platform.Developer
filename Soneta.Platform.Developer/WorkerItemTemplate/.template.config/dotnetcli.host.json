@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json.schemastore.org/dotnetcli.host",
+  "symbolInfo": {
+    "worker-class": {
+      "isHidden": true
+    },
+    "worker-paramsclass": {
+      "isHidden": true
+    },
+    "$worker_registerparams$": {
+      "isHidden": true
+    },
+    "worker-register-params": {
+      "shortName": "wp"
+    },
+    "worker-caption": {
+      "shortName": "wc"
+    },
+    "worker-datatype": {
+      "shortName": "wd"
+    },
+    "worker-priority": {
+      "shortName": "wpr"
+    }
+  }
+}

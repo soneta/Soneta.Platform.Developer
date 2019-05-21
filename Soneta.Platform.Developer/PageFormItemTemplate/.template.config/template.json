@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Soneta",
+  "classifications": [ "Soneta", "Addon", "Item", "PageForm" ],
+  "identity": "Soneta.Addon.Item.PageForm",
+  "groupIdentity": "Soneta.Addon.Item.PageForm",
+  "name": "Soneta Addon Item PageForm",
+  "shortName": "soneta-item-pageform",
+  "description": "Komponent PageForm dla produktów firmy Soneta",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "sourceName": "$fileinputname$",
+  "preferNameDirectory": true,
+  "symbols": {
+    "safe-item-root-name": {
+      "type": "bind",
+      "binding": "name",
+      "replaces": "$safeitemrootname$",
+      "dataType": "string"
+    },
+    "default-namespace": {
+      "type": "bind",
+      "binding": "name",
+      "replaces": "$defaultnamespace$",
+      "dataType": "string"
+    },
+    "root-namespace": {
+      "type": "bind",
+      "binding": "name",
+      "replaces": "$rootnamespace$",
+      "dataType": "string"
+    },
+    "pageform-xml": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "AddPageFormXmlSuffix",
+      "replaces": "$pageform_xml$",
+      "dataType": "string"
+    },
+    "pageform-register-folder": {
+      "type": "parameter",
+      "dataType": "bool",
+      "defaultValue": "false",
+      "description": "Rejestruj jako folder"
+    },
+    "pageform-caption": {
+      "type": "parameter",
+      "replaces": "$pageform_caption$",
+      "dataType": "string",
+      "description": "Tytu³ zak³adki (Caption Html)",
+      "isRequired": true
+    },
+    "pageform-pagename": {
+      "type": "parameter",
+      "replaces": "$pageform_pagename$",
+      "dataType": "string",
+      "description": "Nazwa zak³adki (Name)",
+      "isRequired": true
+    },
+    "pageform-datatype": {
+      "type": "parameter",
+      "replaces": "$pageform_datattype$",
+      "dataType": "string",
+      "description": "Typ danych (DataType)",
+      "isRequired": true
+    },
+    "pageform-priority": {
+      "type": "parameter",
+      "replaces": "$pageform_priority$",
+      "dataType": "string",
+      "description": "Priorytet (Priority)",
+      "defaultValue": "100000"
+    },
+    "$pageform_registerfolder$": {
+      "type": "generated",
+      "generator": "switch",
+      "dataType": "int",
+      "parameters": {
+        "cases": [
+          {
+            "condition": "pageform-register-folder",
+            "value": "1"
+          },
+          {
+            "condition": "!pageform-register-folder",
+            "value": "0"
+          }
+        ]
+      }
+    }
+  },
+  "defaultName": "MyPageForm",
+  "sources": [
+    {
+      "include": [ "*.cs", "*.xml" ],
+      "rename": {
+        "Class.cs": "$fileinputname$.cs",
+        "Page.pageform.xml": "$fileinputname$.ogolne.pageform.xml"
+      }
+    }
+  ],
+  "SpecialCustomOperations": {
+    "*": {
+      "operations": [
+        {
+          "type": "conditional",
+          "configuration": {
+            "if": [ "$if$" ],
+            "endif": [ "$endif$" ]
+          }
+        }
+      ]
+    }
+  },
+  "forms": {
+    "AddPageFormXmlSuffix": {
+      "identifier": "replace",
+      "replacement": ".ogolne.pageform.xml",
+      "pattern": "$"
+    }
+  }
+}

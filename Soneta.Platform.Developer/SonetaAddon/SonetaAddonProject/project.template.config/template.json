@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Soneta",
+  "classifications": [ "Soneta", "Addon", "Project" ],
+  "name": "Soneta Addon Project",
+  "description": "Projekt startowy przeznaczony dla developer'ów piszących dodatki do produktów firmy Soneta.",
+  "groupIdentity": "Soneta.Addon.Project",
+  "identity": "Soneta.Addon.Project",
+  "shortName": "soneta-addon-project",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "SonetaAddonProject",
+  "preferNameDirectory": true,
+  "defaultName": "SonetaAddonProject",
+  "sources": [
+    {
+      "include": [
+        "SonetaAddonProject.csproj"
+      ]
+    }
+  ]
+}

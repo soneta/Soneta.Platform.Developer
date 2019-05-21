@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>Soneta - ViewInfo</Name>
+    <Description>Komponent ViewInfo dla produktów firmy Soneta</Description>
+    <Icon>ViewInfoItemTemplate.ico</Icon>
+    <TemplateID>78f936ee-9169-49f8-8e81-c9827c1e643a</TemplateID>
+    <ProjectType>CSharp</ProjectType>
+    <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <DefaultName>MyViewInfo</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <References>
+      <Reference>
+        <Assembly>System</Assembly>
+      </Reference>
+    </References>
+    <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$.cs">Class.cs</ProjectItem>
+    <ProjectItem SubType="" TargetFileName="$fileinputname$.viewform.xml" ItemType="EmbeddedResource" ReplaceParameters="true">Page.viewform.xml</ProjectItem>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>ItemTemplateWizard, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=null</Assembly>
+    <FullClassName>ItemTemplateWizard.Wizards.ViewInfoItemTemplateWizard</FullClassName>
+  </WizardExtension>
+</VSTemplate>

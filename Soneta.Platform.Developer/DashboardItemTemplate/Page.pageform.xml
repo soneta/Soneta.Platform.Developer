@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<DataForm xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://www.enova.pl/schema/form.xsd"
+          DataType="Soneta.Business.UI.Dashboard,Soneta.Business"
+          Contexts="License.All"
+          Priority="$dashboard_priority$">
+  <Page DataContext="{DataSource}" Width="2" Height="2" Visibility="{new $dashboard_class$.IsVisible}">
+    <Group CaptionHtml="$dashboard_caption$" DataContext="{new $dashboard_class$}" Class="DashboardItem">
+      <Row>
+        <Stack Width="*" Class="Tight">
+          <Label CaptionHtml="Hello !!!" Class="LargeFont" Width="35"></Label>
+          <Label CaptionHtml="$dashboard_class$" Class="GreenFont" Width="35"></Label>
+        </Stack>
+      </Row>
+    </Group>
+  </Page>
+</DataForm>

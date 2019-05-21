@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>Soneta - Worker</Name>
+    <Description>Komponent Worker dla produktów firmy Soneta</Description>
+    <Icon>WorkerItemTemplate.ico</Icon>
+    <TemplateID>80173738-4bd3-4271-8db3-d3f95299f9b5</TemplateID>
+    <ProjectType>CSharp</ProjectType>
+    <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <DefaultName>MyWorker</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <References>
+      <Reference>
+        <Assembly>System</Assembly>
+      </Reference>
+    </References>
+    <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$Worker.cs">Class.cs</ProjectItem>
+    <ProjectItem SubType="" TargetFileName="$fileinputname$WorkerParams.Ogolne.pageform.xml" ItemType="EmbeddedResource" ReplaceParameters="true">Page.pageform.xml</ProjectItem>
+    <CustomParameters>
+      <CustomParameter Name="$worker_root$" Value="$rootnamespace$"/>
+      <CustomParameter Name="$worker_class$" Value="$fileinputname$Worker"/>
+      <CustomParameter Name="$worker_paramsclass$" Value="$fileinputname$WorkerParams"/>
+    </CustomParameters>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>ItemTemplateWizard, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=null</Assembly>
+    <FullClassName>ItemTemplateWizard.Wizards.WorkerItemTemplateWizard</FullClassName>
+  </WizardExtension>
+</VSTemplate>

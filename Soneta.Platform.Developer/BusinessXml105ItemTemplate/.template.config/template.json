@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Soneta",
+  "classifications": [ "Soneta", "Addon", "Item", "BusinessXml" ],
+  "identity": "Soneta.Addon.Item.BusinessXml",
+  "groupIdentity": "Soneta.Addon.Item.BusinessXml",
+  "name": "Soneta Addon Item BusinessXml",
+  "shortName": "soneta-item-businessxml",
+  "description": "Rozszerzenie bazy danych dla produktów firmy Soneta",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "sourceName": "$fileinputname$",
+  "preferNameDirectory": true,
+  "symbols": {
+    "safe-item-root-name": {
+      "type": "bind",
+      "binding": "name",
+      "replaces": "$safeitemrootname$",
+      "dataType": "string"
+    },
+    "default-namespace": {
+      "type": "bind",
+      "binding": "name",
+      "replaces": "$defaultnamespace$",
+      "dataType": "string"
+    },
+    "root-namespace": {
+      "type": "bind",
+      "binding": "name",
+      "replaces": "$rootnamespace$",
+      "dataType": "string"
+    }
+  },
+  "defaultName": "MyDbExtension",
+  "sources": [
+    {
+      "include": [ "*.xml" ],
+      "rename": {
+        "file.business.xml": "$fileinputname$.business.xml"
+      }
+    }
+  ]
+}

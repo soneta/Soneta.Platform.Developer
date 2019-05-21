@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Soneta",
+  "classifications": [ "Soneta", "Addon" ],
+  "name": "Soneta Addon",
+  "description": "Kompletny zestaw projektów przeznaczony do tworzenia dodatków dla produktów firmy Soneta.",
+  "groupIdentity": "Soneta.Addon",
+  "identity": "Soneta.Addon",
+  "shortName": "soneta-addon",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "SonetaAddonProject",
+  "preferNameDirectory": true,
+  "defaultName": "SonetaAddonProject",
+  "sources": [
+    {
+      "source": "SonetaAddonProject/",
+      "include": [
+        "global.json",
+        "Directory.Build.props"
+      ]
+    },
+    {
+      "include": [
+        "SonetaAddonProject/SonetaAddonProject.csproj"
+      ]
+    },
+    {
+      "include": [
+        "SonetaAddonProject/SonetaAddonProject.csproj",
+        "SonetaAddonProject/EnsureSonetaTypesReferenceClass.cs"
+      ],
+      "rename": {
+        "SonetaAddonProject": "SonetaAddonProject.UI"
+      }
+    },
+    {
+      "include": [
+        "SonetaAddonProject/SonetaAddonProject.csproj"
+      ],
+      "rename": {
+        "SonetaAddonProject": "SonetaAddonProject.Tests"
+      }
+    }
+  ]
+}

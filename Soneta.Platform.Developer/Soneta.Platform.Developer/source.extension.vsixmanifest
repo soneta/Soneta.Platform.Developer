@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="Soneta.Platform.Developer..0563df88-c11f-457d-9c25-b985cba99a5b" Version="4.0" Language="en-US" Publisher="Soneta" />
+        <DisplayName>Soneta Platform Developer</DisplayName>
+        <Description xml:space="preserve">Project and Item Templates for developers writing Soneta platform plugins.</Description>
+        <License>License.txt</License>
+        <Icon>soneta.png</Icon>
+        <PreviewImage>soneta.png</PreviewImage>
+        <Tags>Soneta, Addon</Tags>
+    </Metadata>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
+    <Installation>
+        <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[15.0, 17.0)" />
+        <InstallationTarget Version="[15.0, 17.0)" Id="Microsoft.VisualStudio.Community" />
+        <InstallationTarget Version="[15.0, 17.0)" Id="Microsoft.VisualStudio.Enterprise" />
+    </Installation>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+    </Dependencies>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="SonetaAddon" d:TargetPath="|SonetaAddon;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
+        <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="Project" d:ProjectName="ItemTemplateWizard" Path="|ItemTemplateWizard|" AssemblyName="|ItemTemplateWizard;AssemblyName|" d:VsixSubPath="Assemblies" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="BusinessXml105ItemTemplate" d:TargetPath="|BusinessXml105ItemTemplate;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="PageFormItemTemplate" d:TargetPath="|PageFormItemTemplate;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="WorkerItemTemplate" d:TargetPath="|WorkerItemTemplate;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="ViewInfoItemTemplate" d:TargetPath="|ViewInfoItemTemplate;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="DashboardItemTemplate" d:TargetPath="|DashboardItemTemplate;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
+    </Assets>
+</PackageManifest>

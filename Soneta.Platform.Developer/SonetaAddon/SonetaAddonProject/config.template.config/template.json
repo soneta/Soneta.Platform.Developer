@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Soneta",
+  "classifications": [ "Soneta", "Addon", "Config" ],
+  "identity": "Soneta.Addon.Project.Config",
+  "groupIdentity": "Soneta.Addon.Project.Config",
+  "name": "Soneta Addon Project Config",
+  "shortName": "soneta-addon-config",
+  "description": "Komponent zawierający pliki konfiguracyjne dla produktów firmy Soneta.",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "preferNameDirectory": true,
+  "sources": [
+    {
+      "include": [
+        "global.json",
+        "Directory.Build.props"
+      ]
+    }
+  ]
+}

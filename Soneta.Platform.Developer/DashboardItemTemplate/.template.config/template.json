@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Soneta",
+  "classifications": [ "Soneta", "Addon", "Item", "Dashboard" ],
+  "identity": "Soneta.Addon.Item.Dashboard",
+  "groupIdentity": "Soneta.Addon.Item.Dashboard",
+  "name": "Soneta Addon Item Dashboard",
+  "shortName": "soneta-item-dashboard",
+  "description": "Komponent Dashboard dla produktów firmy Soneta",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "sourceName": "$fileinputname$",
+  "preferNameDirectory": true,
+  "symbols": {
+    "default-namespace": {
+      "type": "bind",
+      "binding": "name",
+      "replaces": "$defaultnamespace$",
+      "dataType": "string"
+    },
+    "root-namespace": {
+      "type": "bind",
+      "binding": "name",
+      "replaces": "$rootnamespace$",
+      "dataType": "string"
+    },
+    "dashboard-class": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "AddExtenderSuffix",
+      "replaces": "$dashboard_class$",
+      "dataType": "string"
+    },
+    "dashboard-caption": {
+      "type": "parameter",
+      "replaces": "$dashboard_caption$",
+      "dataType": "string",
+      "description": "Tytu³ dashboard (CaptionHtml)",
+      "isRequired": true
+    },
+    "dashboard-priority": {
+      "type": "parameter",
+      "replaces": "$dashboard_priority$",
+      "dataType": "string",
+      "description": "Priorytet (Priority)",
+      "defaultValue": "100000"
+    }
+  },
+  "defaultName": "MyDashboard",
+  "sources": [
+    {
+      "include": [ "*.cs", "*.xml" ],
+      "rename": {
+        "Class.cs": "$fileinputname$.cs",
+        "Page.pageform.xml": "$fileinputname$.pageform.xml"
+      }
+    }
+  ],
+  "forms": {
+    "AddExtenderSuffix": {
+      "identifier": "replace",
+      "replacement": "Extender",
+      "pattern": "$"
+    }
+  }
+}

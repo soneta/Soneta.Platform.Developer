@@ -1,0 +1,26 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Soneta Addon Project (Soneta.Sdk)</Name>
+    <Description>Projekt startowy przeznaczony dla developer'ów piszących dodatki do produktów firmy Soneta.</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>SonetaAddon</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>SonetaAddon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="SonetaAddonProject.csproj" ReplaceParameters="true">
+      <Folder Name="" TargetFolderName=""/>
+    </Project>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>ItemTemplateWizard, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=null</Assembly>
+    <FullClassName>ItemTemplateWizard.Wizards.SonetaAddonProjectTemplateWizard</FullClassName>
+  </WizardExtension>
+</VSTemplate>

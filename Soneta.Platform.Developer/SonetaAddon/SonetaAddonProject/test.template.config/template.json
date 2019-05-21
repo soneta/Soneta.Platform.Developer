@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Soneta",
+  "classifications": [ "Soneta", "Addon", "Project", "Tests", "NUnit" ],
+  "name": "Soneta Addon Project Tests",
+  "description": "Projekt startowy przeznaczony dla developer'ów piszących testy dodatków do produktów firmy Soneta.",
+  "groupIdentity": "Soneta.Addon.Project.Tests",
+  "identity": "Soneta.Addon.Project.Tests",
+  "shortName": "soneta-addon-tests",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "SonetaAddonProject",
+  "preferNameDirectory": true,
+  "defaultName": "SonetaAddonProject",
+  "sources": [
+    {
+      "include": [
+        "SonetaAddonProject.csproj"
+      ],
+      "rename": {
+        "SonetaAddonProject": "SonetaAddonProject.Tests"
+      }
+    }
+  ]
+}

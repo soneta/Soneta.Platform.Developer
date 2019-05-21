@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>Soneta - Dashboard</Name>
+    <Description>Komponent Dashboard dla produktów firmy Soneta</Description>
+    <Icon>DashboardItemTemplate.ico</Icon>
+    <TemplateID>7cab22c6-2308-440a-8d7f-80a1cb3e8730</TemplateID>
+    <ProjectType>CSharp</ProjectType>
+    <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <DefaultName>MyDashboard</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <References>
+      <Reference>
+        <Assembly>System</Assembly>
+      </Reference>
+    </References>
+    <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$.cs">Class.cs</ProjectItem>
+    <ProjectItem SubType="" TargetFileName="$fileinputname$.pageform.xml" ItemType="EmbeddedResource" ReplaceParameters="true">Page.pageform.xml</ProjectItem>
+    <CustomParameters>
+      <CustomParameter Name="$dashboard_class$" Value="$fileinputname$Extender"/>
+    </CustomParameters>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>ItemTemplateWizard, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=null</Assembly>
+    <FullClassName>ItemTemplateWizard.Wizards.DashboardItemTemplateWizard</FullClassName>
+  </WizardExtension>
+
+</VSTemplate>
