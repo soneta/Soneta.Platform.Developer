@@ -14,9 +14,7 @@ steps:
     msbuildArguments: '/r'
 - task: CopyFiles@2
   inputs:
-    contents: |
-      $(name)/$(name)/bin/$(configuration)/*.nupkg
-      $(name)/$(name)/bin/$(configuration)/*/*.vsix
+    contents: $(name)/$(name)/bin/$(configuration)/**/?(*.nupkg|*.vsix)
     targetFolder: $(Build.ArtifactStagingDirectory)
     cleanTargetFolder: true
 - task: PublishBuildArtifacts@1
