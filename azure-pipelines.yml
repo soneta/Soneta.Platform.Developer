@@ -2,18 +2,21 @@ resources:
 - repo: self
 pool:
   vmImage: 'windows-2019'
+variables:
+  configuration: Release
+  name: Soneta.Platform.Developer
 steps:
 - task: MSBuild@1
   displayName: Build
   inputs:
-    solution: 'Soneta.Platform.Developer/Soneta.Platform.Developer.sln'
-    configuration: 'Release'
+    solution: '($name)/($name).sln'
+    configuration: $(configuration)
     msbuildArguments: '/r'
 - task: CopyFiles@2
   inputs:
     contents: |
-      'Soneta.Platform.Developer/bin/Release/*.nupkg'
-      'Soneta.Platform.Developer/bin/Release/*.visx'
+      '($name)/bin/($configuration)/*.nupkg'
+      '($name)/bin/($configuration)/*.visx'
     targetFolder: '$(Build.ArtifactStagingDirectory)'
     cleanTargetFolder: true
     flattenFolders: true
