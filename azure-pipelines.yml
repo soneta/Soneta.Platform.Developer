@@ -15,8 +15,8 @@ steps:
 - task: CopyFiles@2
   inputs:
     contents: |
-      $(name)/bin/$(configuration)/*.nupkg
-      $(name)/bin/$(configuration)/*.visx
+      $(name)/$(name)/bin/$(configuration)/*.nupkg
+      $(name)/$(name)/bin/$(configuration)/*.vsix
     targetFolder: $(Build.ArtifactStagingDirectory)
     cleanTargetFolder: true
     flattenFolders: true
