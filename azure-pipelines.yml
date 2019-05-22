@@ -9,15 +9,15 @@ steps:
 - task: MSBuild@1
   displayName: Build
   inputs:
-    solution: '($name)/($name).sln'
+    solution: $(name)/$(name).sln
     configuration: $(configuration)
     msbuildArguments: '/r'
 - task: CopyFiles@2
   inputs:
     contents: |
-      '($name)/bin/($configuration)/*.nupkg'
-      '($name)/bin/($configuration)/*.visx'
-    targetFolder: '$(Build.ArtifactStagingDirectory)'
+      $(name)/bin/$(configuration)/*.nupkg
+      $(name)/bin/$(configuration)/*.visx
+    targetFolder: $(Build.ArtifactStagingDirectory)
     cleanTargetFolder: true
     flattenFolders: true
 - task: PublishBuildArtifacts@1
