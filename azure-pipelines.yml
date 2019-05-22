@@ -11,7 +11,9 @@ steps:
     msbuildArguments: '/r'
 - task: CopyFiles@2
   inputs:
-    contents: '$(Agent.BuildDirectory)/bin/Release/*.nupkg'
+    contents: |
+      'Soneta.Platform.Developer/bin/Release/*.nupkg'
+      'Soneta.Platform.Developer/bin/Release/*.visx'
     targetFolder: '$(Build.ArtifactStagingDirectory)'
     cleanTargetFolder: true
     flattenFolders: true
