@@ -1,0 +1,25 @@
+resources:
+- repo: self
+pool:
+  vmImage: 'windows-2019'
+variables:
+  configuration: Release
+  name: Soneta.Platform.Developer
+steps:
+- task: MSBuild@1
+  displayName: Build
+  inputs:
+    solution: $(name)/$(name).sln
+    configuration: $(configuration)
+    msbuildArguments: '/r'
+- task: CopyFiles@2
+  inputs:
+    contents: $(name)/$(name)/bin/$(configuration)/**/?(*.nupkg|*.vsix)
+    targetFolder: $(Build.ArtifactStagingDirectory)
+    cleanTargetFolder: true
+    flattenFolders: true
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    artifactName: $(name)
+    PathtoPublish: $(build.artifactstagingdirectory)
