@@ -3,16 +3,12 @@ resources:
 pool:
   vmImage: 'windows-2019'
 steps:
-- task: DotNetCoreCLI@2
+- task: MSBuild@1
   displayName: Build
   inputs:
-    projects: '**/*.csproj'
-    arguments: '--configuration release'
-- task: DotNetCoreCLI@2
-  displayName: Pack
-  inputs:
-    command: pack
-    nobuild: true
+    solution: '**/*.csproj'
+    configuration: 'Release'
+    msbuildArguments: '/r'
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
