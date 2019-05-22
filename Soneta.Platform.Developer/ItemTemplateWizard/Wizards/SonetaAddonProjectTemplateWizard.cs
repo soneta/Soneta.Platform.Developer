@@ -11,10 +11,11 @@ namespace ItemTemplateWizard.Wizards
     {
         private DTE dte;
         private string solutionDir;
-        private string projectDir;
+        private string destinationDir;
         private string projectSuffix;
         private bool configProject;
-        const string solutionItemsFolderName = "Solution Items";
+        private WizardRunKind wizardRunKind;
+        private const string SolutionItemsFolderName = "Solution Items";
 
         public void BeforeOpeningFile(ProjectItem projectItem)
         {
@@ -22,16 +23,19 @@ namespace ItemTemplateWizard.Wizards
 
         public void ProjectFinishedGenerating(Project project)
         {
+            if (project == null)
+                return;
+
             project.Name = Path.ChangeExtension(project.Name, projectSuffix);
 
             if (configProject)
             {
-                var solutionItemsFolder = dte.Solution.Projects.Cast<Project>().FirstOrDefault(x => x.Name.Equals(solutionItemsFolderName, System.StringComparison.OrdinalIgnoreCase));
-                solutionItemsFolder = solutionItemsFolder ?? ((Solution2)dte.Solution).AddSolutionFolder(solutionItemsFolderName);
+                var solutionItemsFolder = dte.Solution.Projects.Cast<Project>().FirstOrDefault(x => x.Name.Equals(SolutionItemsFolderName, System.StringComparison.OrdinalIgnoreCase));
+                solutionItemsFolder = solutionItemsFolder ?? ((Solution2)dte.Solution).AddSolutionFolder(SolutionItemsFolderName);
 
                 foreach (ProjectItem item in project.ProjectItems)
                 {
-                    var sourcePath = Path.Combine(projectDir, item.Name);
+                    var sourcePath = Path.Combine(destinationDir, item.Name);
                     var targetPath = Path.Combine(solutionDir, item.Name);
                     File.Move(sourcePath, targetPath);
                     solutionItemsFolder.ProjectItems.AddFromFile(targetPath);
@@ -39,10 +43,10 @@ namespace ItemTemplateWizard.Wizards
 
                 dte.Solution.Remove(project);
 
-                if (projectDir == solutionDir)
+                if (destinationDir == solutionDir)
                     File.Delete(project.FullName);
                 else
-                    Directory.Delete(projectDir, true);
+                    Directory.Delete(destinationDir, true);
             }
         }
 
@@ -52,13 +56,43 @@ namespace ItemTemplateWizard.Wizards
 
         public void RunFinished()
         {
+            if (wizardRunKind != WizardRunKind.AsMultiProject)
+                return;
+
+            var solution = dte.Solution;
+
+            var projectsPaths = solution.Projects.Cast<Project>().Skip(1).Select(project =>
+            {
+                solution.Remove(project);
+                return project.FullName;
+            }).ToArray();
+
+            var targetDir = Path.GetDirectoryName(destinationDir);
+            var tempDir = destinationDir + "Temp";
+            Directory.Move(destinationDir, tempDir);
+
+
+            foreach (var projectPath in projectsPaths)
+            {
+                var projectFileName = Path.GetFileName(projectPath);
+                var projectName = Path.GetFileNameWithoutExtension(projectPath);
+                var sourceProjectDir = Path.Combine(tempDir, projectName);
+                var targetProjectDir = Path.Combine(targetDir, projectName);
+                var targetProjectFileName = Path.Combine(targetProjectDir, projectFileName);
+
+                Directory.Move(sourceProjectDir, targetProjectDir);
+                solution.AddFromFile(targetProjectFileName);
+            }
+
+            Directory.Delete(tempDir, true);
         }
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
         {
             dte = (DTE)automationObject;
+            wizardRunKind = runKind;
             replacementsDictionary.TryGetValue("$solutiondirectory$", out solutionDir);
-            replacementsDictionary.TryGetValue("$destinationdirectory$", out projectDir);
+            replacementsDictionary.TryGetValue("$destinationdirectory$", out destinationDir);
             replacementsDictionary.TryGetValue("$projectsuffix$", out projectSuffix);
             configProject = projectSuffix == "Config";
         }

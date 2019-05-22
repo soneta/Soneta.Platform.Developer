@@ -21,4 +21,8 @@
       <ProjectTemplateLink ProjectName="$safeprojectname$.Tests">SonetaAddonProject\SonetaAddon.Tests.vstemplate</ProjectTemplateLink>
     </ProjectCollection>
   </TemplateContent>
+  <WizardExtension>
+    <Assembly>ItemTemplateWizard, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=null</Assembly>
+    <FullClassName>ItemTemplateWizard.Wizards.SonetaAddonProjectTemplateWizard</FullClassName>
+  </WizardExtension>
 </VSTemplate>
