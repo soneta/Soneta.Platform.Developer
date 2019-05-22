@@ -21,4 +21,5 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
+    artifactName: $(name)
+    PathtoPublish: $(build.artifactstagingdirectory)
