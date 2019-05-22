@@ -6,7 +6,7 @@ steps:
 - task: MSBuild@1
   displayName: Build
   inputs:
-    solution: '**/*.csproj'
+    solution: 'Soneta.Platform.Developer/Soneta.Platform.Developer.sln'
     configuration: 'Release'
     msbuildArguments: '/r'
 - task: PublishBuildArtifacts@1
