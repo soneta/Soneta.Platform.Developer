@@ -16,10 +16,9 @@ steps:
   inputs:
     contents: |
       $(name)/$(name)/bin/$(configuration)/*.nupkg
-      $(name)/$(name)/bin/$(configuration)/*.vsix
+      $(name)/$(name)/bin/$(configuration)/*/*.vsix
     targetFolder: $(Build.ArtifactStagingDirectory)
     cleanTargetFolder: true
-    flattenFolders: true
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
