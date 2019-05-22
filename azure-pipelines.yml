@@ -9,6 +9,12 @@ steps:
     solution: 'Soneta.Platform.Developer/Soneta.Platform.Developer.sln'
     configuration: 'Release'
     msbuildArguments: '/r'
+- task: CopyFiles@2
+  inputs:
+    contents: '$(Agent.BuildDirectory)/bin/Release/*.nupkg'
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
+    cleanTargetFolder: true
+    flattenFolders: true
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
