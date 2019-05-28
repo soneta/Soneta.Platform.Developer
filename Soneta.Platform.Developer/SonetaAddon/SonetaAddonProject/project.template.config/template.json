@@ -3,7 +3,7 @@
   "author": "Soneta",
   "classifications": [ "Soneta", "Addon", "Project" ],
   "name": "Soneta Addon Project",
-  "description": "Projekt startowy przeznaczony dla developer'ów piszących dodatki do produktów firmy Soneta.",
+  "description": "Projekt startowy przeznaczony dla developer'ów piszących dodatki do produktów firmy Soneta. Samodzielnie utworzony projekt do poprawnego działania wymaga plików konfiguracyjnych zawartych w szablonie 'Soneta Addon Config'.",
   "groupIdentity": "Soneta.Addon.Project",
   "identity": "Soneta.Addon.Project",
   "shortName": "soneta-addon-project",
