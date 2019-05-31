@@ -30,8 +30,7 @@ namespace ItemTemplateWizard.Wizards
 
             if (configProject)
             {
-                var solutionItemsFolder = dte.Solution.Projects.Cast<Project>().FirstOrDefault(x => x.Name.Equals(SolutionItemsFolderName, System.StringComparison.OrdinalIgnoreCase));
-                solutionItemsFolder = solutionItemsFolder ?? ((Solution2)dte.Solution).AddSolutionFolder(SolutionItemsFolderName);
+                var solutionItemsFolder = GetProjects(SolutionItemsFolderName).FirstOrDefault() ?? ((Solution2)dte.Solution).AddSolutionFolder(SolutionItemsFolderName);
 
                 foreach (ProjectItem item in project.ProjectItems)
                 {
@@ -56,12 +55,12 @@ namespace ItemTemplateWizard.Wizards
 
         public void RunFinished()
         {
-            if (wizardRunKind != WizardRunKind.AsMultiProject)
+            if (wizardRunKind != WizardRunKind.AsMultiProject || destinationDir == solutionDir)
                 return;
 
             var solution = dte.Solution;
 
-            var projectsPaths = solution.Projects.Cast<Project>().Skip(1).Select(project =>
+            var projectsPaths = GetProjects().Except(GetProjects(SolutionItemsFolderName)).Select(project =>
             {
                 solution.Remove(project);
                 return project.FullName;
@@ -70,7 +69,6 @@ namespace ItemTemplateWizard.Wizards
             var targetDir = Path.GetDirectoryName(destinationDir);
             var tempDir = destinationDir + "Temp";
             Directory.Move(destinationDir, tempDir);
-
 
             foreach (var projectPath in projectsPaths)
             {
@@ -100,6 +98,16 @@ namespace ItemTemplateWizard.Wizards
         public bool ShouldAddProjectItem(string filePath)
         {
             return true;
-        } 
+        }
+
+        private IEnumerable<Project> GetProjects(string name = null)
+        {
+            var projects = dte.Solution.Projects.Cast<Project>();
+
+            if (!string.IsNullOrEmpty(name))
+                projects = projects.Where(x => x.Name.Equals(name, System.StringComparison.OrdinalIgnoreCase));
+
+            return projects;
+        }
     }
 }
