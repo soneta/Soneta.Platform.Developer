@@ -5,7 +5,7 @@
 
 # Wstęp
 
-Soneta Platform Developer jest to rozszerzenie Visual Studio 2019 zawierające zestaw szablonów Visual Studio, które implementują elementy [Soneta.sdk](https://github.com/soneta/Soneta.MsBuild.SDK). Soneta Platform Developer promuje rozdzielanie logiczne tworzonych solucji rozszerzeń zgodnie z architekturą enova365, poprzez podział rozwiązania na osobne projekty warstwy logiki biznesowej, warstwy interfejsu użytkownika oraz warstwy testującej. Realizacja takiego uporządkowania polega na automatycznym utworzeniu przez SDK trzech projektów według typów, które odpowiadają wyżej wspomnianemu podziałowi. W celu zachowania pełnej elastyczności i swobody w projektowaniu twórca rozszerzenia enova365 ma możliwość utworzenia każdego typu projektu oddzielnie. <br>
+Soneta Platform Developer jest to rozszerzenie Visual Studio 2019 zawierające zestaw szablonów Visual Studio, które implementują elementy [Soneta.MsBuild.SDK](https://github.com/soneta/Soneta.MsBuild.SDK). Soneta Platform Developer promuje rozdzielanie logiczne tworzonych solucji rozszerzeń zgodnie z architekturą enova365, poprzez podział rozwiązania na osobne projekty warstwy logiki biznesowej, warstwy interfejsu użytkownika oraz warstwy testującej. Realizacja takiego uporządkowania polega na automatycznym utworzeniu przez SDK trzech projektów według typów, które odpowiadają wyżej wspomnianemu podziałowi. W celu zachowania pełnej elastyczności i swobody w projektowaniu twórca rozszerzenia enova365 ma możliwość utworzenia każdego typu projektu oddzielnie. <br>
 Podczas tworzenia nowego projektu użytkownik może wybrać jeden z poniższych szablonów:
 <ul>
     <li>Soneta Addon Project – to właściwy projekt logiki dodatku</li>
@@ -65,6 +65,10 @@ dotnet sln add .\MyExtension.Tests\MyExtension.Tests.csproj
 dotnet sln add .\MyExtension.UI\MyExtension.UI.csproj
 ```
 <img src="Soneta.Platform.Developer\documentation\pictures\vsc_files.jpg"><br>
+Możemy również użyć komendy Power Shella, która doda do solucji wszystkie projekty zawarte w folderze. Utworzenie nowej solucji nie jest konieczne dla Visual Studio Code.
+```
+Get-ChildItem *.csproj -Recurse | ForEach-Object { dotnet sln add $_.FullName }
+```
 Następnie wciskamy F1 i wybieramy:
 ```
  „Tasks: Configure Default Build Task” --> „Create tasks.json file fromtemplate” --> .NET Core
@@ -96,7 +100,7 @@ Następnie do folderu **.vscode** dodamy plik **lunch.json** i wklejamy do niego
   ]
 }
 ```
-W pliku **lunch.json** należy **ustawić ścieżkę enova365**, którą chcemy wykorzystywać do debugowania. Aby uruchomić **debugowanie** naciskamy **F5**.
+W pliku **lunch.json** należy **ustawić ścieżkę enova365**, którą chcemy wykorzystywać do debugowania. Do debugowanie można użyć nie tylko **Soneta Explorer**, ale również **SonetaServer** lub inne produkty, które się pojawią.  Aby uruchomić **debugowanie** naciskamy **F5**.
 
 
 
