@@ -101,8 +101,10 @@ Następnie do folderu **.vscode** dodamy plik **lunch.json** i wklejamy do niego
 }
 ```
 W pliku **lunch.json** należy **ustawić ścieżkę enova365**, którą chcemy wykorzystywać do debugowania. Do debugowanie można użyć nie tylko **Soneta Explorer**, ale również **SonetaServer** lub inne produkty, które się pojawią.  Aby uruchomić **debugowanie** naciskamy **F5**.
+
 # Współpraca
 W celu zaproponowania zmian należy stworzyć Pull Request do gałęzi develop. Po podjęciu decyzji o wydaniu nowej wersji branch develop zostanie zmergowany do mastera i dodatek zostanie automatycznie wydany.
+
 
 
 
