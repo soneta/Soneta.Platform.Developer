@@ -12,13 +12,13 @@
     "type": "project"
   },
   "sourceName": "SonetaAddonProject",
-  "preferNameDirectory": true,
   "defaultName": "SonetaAddonProject",
   "sources": [
     {
       "include": [
         "SonetaAddonProject.csproj"
       ],
+      "target": ".\\SonetaAddonProject.Tests",
       "rename": {
         "SonetaAddonProject": "SonetaAddonProject.Tests"
       }

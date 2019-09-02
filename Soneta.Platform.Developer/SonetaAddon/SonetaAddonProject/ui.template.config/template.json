@@ -12,7 +12,6 @@
     "type": "project"
   },
   "sourceName": "SonetaAddonProject",
-  "preferNameDirectory": true,
   "defaultName": "SonetaAddonProject",
   "sources": [
     {
@@ -20,6 +19,7 @@
         "SonetaAddonProject.csproj",
         "EnsureSonetaTypesReferenceClass.cs"
       ],
+      "target": ".\\SonetaAddonProject.UI",
       "rename": {
         "SonetaAddonProject": "SonetaAddonProject.UI"
       }
