@@ -3,7 +3,7 @@
   "author": "Soneta",
   "classifications": [ "Soneta", "Addon", "Project", "UI" ],
   "name": "Soneta Addon Project UI",
-  "description": "Projekt startowy przeznaczony dla developer'ów piszących warstwę interfejsu użytkownika dodatków do produktów firmy Soneta.",
+  "description": "Projekt startowy przeznaczony dla developer'ów piszących warstwę interfejsu użytkownika dodatków do produktów firmy Soneta. Samodzielnie utworzony projekt do poprawnego działania wymaga plików konfiguracyjnych zawartych w szablonie 'Soneta Addon Config'.",
   "groupIdentity": "Soneta.Addon.Project.UI",
   "identity": "Soneta.Addon.Project.UI",
   "shortName": "soneta-addon-ui",
