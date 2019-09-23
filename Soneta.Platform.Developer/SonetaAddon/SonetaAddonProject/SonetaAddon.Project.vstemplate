@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
     <Name>Soneta Addon Project (Soneta.Sdk)</Name>
-    <Description>Projekt startowy przeznaczony dla developer'ów piszących dodatki do produktów firmy Soneta.</Description>
+    <Description>Projekt startowy przeznaczony dla developer'ów piszących dodatki do produktów firmy Soneta. Samodzielnie utworzony projekt do poprawnego działania wymaga plików konfiguracyjnych zawartych w szablonie 'Soneta Addon Config'.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>

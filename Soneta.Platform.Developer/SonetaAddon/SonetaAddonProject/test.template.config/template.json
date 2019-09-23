@@ -3,7 +3,7 @@
   "author": "Soneta",
   "classifications": [ "Soneta", "Addon", "Project", "Tests", "NUnit" ],
   "name": "Soneta Addon Project Tests",
-  "description": "Projekt startowy przeznaczony dla developer'ów piszących testy dodatków do produktów firmy Soneta.",
+  "description": "Projekt startowy przeznaczony dla developer'ów piszących testy dodatków do produktów firmy Soneta. Samodzielnie utworzony projekt do poprawnego działania wymaga plików konfiguracyjnych zawartych w szablonie 'Soneta Addon Config'.",
   "groupIdentity": "Soneta.Addon.Project.Tests",
   "identity": "Soneta.Addon.Project.Tests",
   "shortName": "soneta-addon-tests",
@@ -12,13 +12,13 @@
     "type": "project"
   },
   "sourceName": "SonetaAddonProject",
-  "preferNameDirectory": true,
   "defaultName": "SonetaAddonProject",
   "sources": [
     {
       "include": [
         "SonetaAddonProject.csproj"
       ],
+      "target": ".\\SonetaAddonProject.Tests",
       "rename": {
         "SonetaAddonProject": "SonetaAddonProject.Tests"
       }

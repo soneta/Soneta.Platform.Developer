@@ -79,7 +79,7 @@ W wyniku naszych działań powstanie plik „tasks.json”.
 Teraz możemy zbudować nasze rozwiązanie uruchamiając task „**tasks.json**” . Robimy to w podobny sposób jak utowrzyliśmy task, a mianowicie wciskamy **F1--> Tasks:Run BuildTask--> Build**. Po wykonaniu tej operacji do naszego rozwiązania zostanie dodany folder „**bin**” .
 <br>
 <br>
-Następnie do folderu **.vscode** dodamy plik **lunch.json** i wklejamy do niego:
+Następnie do folderu **.vscode** dodamy plik **launch.json** i wklejamy do niego:
 ```
 {
   "version": "0.2.0",
@@ -100,7 +100,7 @@ Następnie do folderu **.vscode** dodamy plik **lunch.json** i wklejamy do niego
   ]
 }
 ```
-W pliku **lunch.json** należy **ustawić ścieżkę enova365**, którą chcemy wykorzystywać do debugowania. Do debugowanie można użyć nie tylko **Soneta Explorer**, ale również **SonetaServer** lub inne produkty, które się pojawią.  Aby uruchomić **debugowanie** naciskamy **F5**.
+W pliku **launch.json** należy **ustawić ścieżkę enova365**, którą chcemy wykorzystywać do debugowania. Do debugowanie można użyć nie tylko **Soneta Explorer**, ale również **SonetaServer** lub inne produkty, które się pojawią.  Aby uruchomić **debugowanie** naciskamy **F5**.
 
 # Współpraca
 W celu zaproponowania zmian należy stworzyć Pull Request do gałęzi develop. Po podjęciu decyzji o wydaniu nowej wersji branch develop zostanie zmergowany do mastera i dodatek zostanie automatycznie wydany.
