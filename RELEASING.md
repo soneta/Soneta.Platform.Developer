@@ -11,10 +11,10 @@
    * [version.json] we właściwości `version` **usunąć część _prerelease_** pozostawiając ją w formacie `<x.y.z>`
    * [vsixmanifest] w atrybucie `Version` elementu `Identity` podnieść numer wersji w formacie `<x.y.z+1>`
 5. Utworzyć i opublikować commit z komunikatem stwierdzającym o zmianie wersji.
-     ```
-     git commit -m "Wersja x.y.z; SDK <wersja SDK>; enova <wersja enova>; vsix <wersja vsix>"
-     git push origin develop
-     ```
+   ```
+   git commit -m "Wersja x.y.z; SDK <wersja SDK>; enova <wersja enova>; vsix <wersja vsix>"
+   git push origin develop
+   ```
 5. Zintegrować `develop` z `master` i opublikować wydanie z `master`
    ```
    git checkout master
@@ -29,15 +29,12 @@ Proces publikacji paczki _NuGet_ uruchomiony został automatycznie. Jest realizo
 ### Czynności ręczne po wydaniu
 
 1. Na gałęzi `develop` **przywrócić część _prerelease_** i podnieść numer wersji `<x.y.z+1>-beta.{height}` w pliku [version.json]
-   * Utworzyć commit z komunikatem stwierdzającym o zmianie wersji.
-     ```
-     git commit -m "Wersja następna: x.y.z+1-prerelease"
-     ```
-   * Opublikować zmianę przyszłej wersji.
-     ```
-     git push origin develop
-     ```
-2. Artefakt w postaci paczki `vsix` należy ręcznie opublikować w [VS marketplace].
+2. Utworzyć i opublikować commit z komunikatem stwierdzającym o zmianie wersji.
+   ```
+   git commit -m "Wersja następna: x.y.z+1-prerelease"
+   git push origin develop
+   ```
+3. Artefakt w postaci paczki `vsix` należy ręcznie opublikować w [VS marketplace].
 
 ##### `Koniec pracy. Gratulacje!`
 
