@@ -5,17 +5,18 @@
 1. Zweryfikować stan synchronizacji gałęzi `develop` i `master`. W razie potrzeby wykonać odpowiednią synchronizację.
 2. Funkcjonalność pożądana w nowej wersji powinna być zakończona. W tym celu należy zweryfikować stan _Pull requests_.
 3. Zgłoszenia dotyczące zrealizowanej funkcjonalności powinny być zamknięte. Zweryfikować stan _Issues_.
-4. Na gałęzi `develop` zmodyfikować następujące pliki:
+4. Ostatnia wydana wersja [Soneta.SDK] powinna być opublikowana. Zweryfikować [Soneta.SDK na nuget.org].
+5. Na gałęzi `develop` zmodyfikować następujące pliki:
    * [Directory.Build.props] w elemencie `SonetaPackageVersion` ustawić ostatnie oficjalne wydanie enova
    * [global.json] we właściwości `Soneta.Sdk` ustawić ostatnie oficjalne wydanie `Soneta.MsBuild.SDK`
    * [version.json] we właściwości `version` **usunąć część _prerelease_** pozostawiając ją w formacie `<x.y.z>`
    * [vsixmanifest] w atrybucie `Version` elementu `Identity` podnieść numer wersji w formacie `<x.y.z+1>`
-5. Utworzyć i opublikować commit z komunikatem stwierdzającym o zmianie wersji.
+6. Utworzyć i opublikować commit z komunikatem stwierdzającym o zmianie wersji.
    ```
    git commit -m "Wersja x.y.z; SDK <wersja SDK>; enova <wersja enova>; vsix <wersja vsix>"
    git push origin develop
    ```
-5. Zintegrować `develop` z `master` i opublikować wydanie z `master`
+7. Zintegrować `develop` z `master` i opublikować wydanie z `master`
    ```
    git checkout master
    git merge develop
@@ -40,6 +41,8 @@ Proces publikacji paczki _NuGet_ uruchomiony został automatycznie. Jest realizo
 
 [version.json]: Soneta.Platform.Developer/Soneta.Platform.Developer/version.json
 [repozytorium]: https://github.com/soneta/Soneta.Platform.Developer
+[Soneta.SDK]: https://github.com/soneta/Soneta.MsBuild.SDK
+[Soneta.SDK na nuget.org]: https://www.nuget.org/packages/Soneta.Sdk
 [pipeline wydania]: https://dev.azure.com/soneta/GitHub/_release?_a=releases&view=mine&definitionId=3
 [Directory.Build.props]: Soneta.Platform.Developer/SonetaAddon/SonetaAddonProject/Directory.Build.props
 [global.json]: Soneta.Platform.Developer/SonetaAddon/SonetaAddonProject/global.json
