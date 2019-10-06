@@ -31,8 +31,8 @@ namespace ItemTemplateWizard.Wizards
             // add an entry to the dictionary to specify the string used for the $viewinfotablename$ token 
             replacementsDictionary.Add("$worker_datattype$", form.get_DataType());
             replacementsDictionary.Add("$worker_priority$", form.get_Priority());
-            replacementsDictionary.Add("$worker_caption$", form.get_Caption());
-            replacementsDictionary.Add("$worker_registerparams$", _registerWorkerParamatersClass ? "1" : "0");
+            replacementsDictionary.Add("$worker_params_caption$", form.get_Caption());
+            replacementsDictionary.Add("$worker_params_register$", _registerWorkerParamatersClass ? "1" : "0");
 
             initDefaultNamespace(replacementsDictionary);
         }

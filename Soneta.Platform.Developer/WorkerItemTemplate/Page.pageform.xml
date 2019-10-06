@@ -3,8 +3,8 @@
           xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
           xmlns="http://www.enova.pl/schema/form.xsd" 
           Priority="$worker_priority$" 
-          DataType="$rootnamespace$.$worker_paramsclass$,$rootnamespace$">
-  <Page Name="$worker_class$Page" CaptionHtml="$worker_caption$" DataContext="{DataSource}">
+          DataType="$rootnamespace$.$worker_params_class$,$rootnamespace$">
+  <Page Name="$worker_params_class$Page" CaptionHtml="$worker_params_caption$" DataContext="{DataSource}">
     <Field CaptionHtml="Parametr1" EditValue="{Parametr1}"/>
   </Page>
 </DataForm>
