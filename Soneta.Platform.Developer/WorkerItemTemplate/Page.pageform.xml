@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0"?>
-<DataForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-          xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-          xmlns="http://www.enova.pl/schema/form.xsd" 
+<DataForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.enova.pl/schema/form.xsd"
+          xsi:schemaLocation="http://www.enova.pl/schema/ http://www.enova.pl/schema/form.xsd"
           Priority="$worker_priority$" 
           DataType="$rootnamespace$.$worker_class$,$defaultnamespace$">
   <Page Name="$worker_class$Page" CaptionHtml="$worker_caption$" DataContext="{DataSource}">

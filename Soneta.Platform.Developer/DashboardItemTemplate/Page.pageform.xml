@@ -2,6 +2,7 @@
 <DataForm xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xmlns="http://www.enova.pl/schema/form.xsd"
+          xsi:schemaLocation="http://www.enova.pl/schema/ http://www.enova.pl/schema/form.xsd"
           DataType="Soneta.Business.UI.Dashboard,Soneta.Business"
           Contexts="License.All"
           Priority="$dashboard_priority$">
