@@ -1,4 +1,4 @@
-{
+Ôªø{
   "$schema": "http://json.schemastore.org/template",
   "author": "Soneta",
   "classifications": [ "Soneta", "Addon", "Item", "PageForm" ],
@@ -6,7 +6,7 @@
   "groupIdentity": "Soneta.Addon.Item.PageForm",
   "name": "Soneta Addon Item PageForm",
   "shortName": "soneta-item-pageform",
-  "description": "Komponent PageForm dla produktÛw firmy Soneta",
+  "description": "Komponent PageForm dla produkt√≥w firmy Soneta",
   "tags": {
     "language": "C#",
     "type": "item"
@@ -49,14 +49,14 @@
       "type": "parameter",
       "replaces": "$pageform_caption$",
       "dataType": "string",
-      "description": "Tytu≥ zak≥adki (Caption Html)",
+      "description": "Tytu≈Ç zak≈Çadki (Caption Html)",
       "isRequired": true
     },
     "pageform-pagename": {
       "type": "parameter",
       "replaces": "$pageform_pagename$",
       "dataType": "string",
-      "description": "Nazwa zak≥adki (Name)",
+      "description": "Nazwa zak≈Çadki (Name)",
       "isRequired": true
     },
     "pageform-datatype": {

@@ -4,8 +4,8 @@
           xmlns="http://www.enova.pl/schema/form.xsd"
           xsi:schemaLocation="http://www.enova.pl/schema/ http://www.enova.pl/schema/form.xsd"
           Priority="$worker_priority$" 
-          DataType="$rootnamespace$.$worker_class$,$defaultnamespace$">
-  <Page Name="$worker_class$Page" CaptionHtml="$worker_caption$" DataContext="{DataSource}">
+          DataType="$rootnamespace$.$worker_params_class$,$rootnamespace$">
+  <Page Name="$worker_params_class$Page" CaptionHtml="$worker_params_caption$" DataContext="{DataSource}">
     <Field CaptionHtml="Parametr1" EditValue="{Parametr1}"/>
   </Page>
 </DataForm>

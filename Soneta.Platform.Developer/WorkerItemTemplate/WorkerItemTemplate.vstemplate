@@ -21,7 +21,7 @@
     <CustomParameters>
       <CustomParameter Name="$worker_root$" Value="$rootnamespace$"/>
       <CustomParameter Name="$worker_class$" Value="$fileinputname$Worker"/>
-      <CustomParameter Name="$worker_paramsclass$" Value="$fileinputname$WorkerParams"/>
+      <CustomParameter Name="$worker_params_class$" Value="$fileinputname$WorkerParams"/>
     </CustomParameters>
   </TemplateContent>
   <WizardExtension>

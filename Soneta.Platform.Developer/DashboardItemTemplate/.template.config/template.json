@@ -1,4 +1,4 @@
-{
+Ôªø{
   "$schema": "http://json.schemastore.org/template",
   "author": "Soneta",
   "classifications": [ "Soneta", "Addon", "Item", "Dashboard" ],
@@ -6,7 +6,7 @@
   "groupIdentity": "Soneta.Addon.Item.Dashboard",
   "name": "Soneta Addon Item Dashboard",
   "shortName": "soneta-item-dashboard",
-  "description": "Komponent Dashboard dla produktÛw firmy Soneta",
+  "description": "Komponent Dashboard dla produkt√≥w firmy Soneta",
   "tags": {
     "language": "C#",
     "type": "item"
@@ -37,7 +37,7 @@
       "type": "parameter",
       "replaces": "$dashboard_caption$",
       "dataType": "string",
-      "description": "Tytu≥ dashboard (CaptionHtml)",
+      "description": "Tytu≈Ç dashboard (CaptionHtml)",
       "isRequired": true
     },
     "dashboard-priority": {

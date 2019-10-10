@@ -1,4 +1,4 @@
-{
+Ôªø{
   "$schema": "http://json.schemastore.org/template",
   "author": "Soneta",
   "classifications": [ "Soneta", "Addon", "Item", "Worker" ],
@@ -6,7 +6,7 @@
   "groupIdentity": "Soneta.Addon.Item.Worker",
   "name": "Soneta Addon Item Worker",
   "shortName": "soneta-item-worker",
-  "description": "Komponent Worker dla produktÛw firmy Soneta",
+  "description": "Komponent Worker dla produkt√≥w firmy Soneta",
   "tags": {
     "language": "C#",
     "type": "item"
@@ -39,24 +39,24 @@
       "replaces": "$worker_class$",
       "dataType": "string"
     },
-    "worker-paramsclass": {
+    "worker-params-class": {
       "type": "derived",
       "valueSource": "name",
       "valueTransform": "AddWorkerParamsSuffix",
-      "replaces": "$worker_paramsclass$",
+      "replaces": "$worker_params_class$",
       "dataType": "string"
     },
-    "worker-register-params": {
+    "worker-params-register": {
       "type": "parameter",
       "dataType": "bool",
       "defaultValue": "false",
       "description": "Generuj parametry workera"
     },
-    "worker-caption": {
+    "worker-params-caption": {
       "type": "parameter",
-      "replaces": "$worker_caption$",
+      "replaces": "$worker_params_caption$",
       "dataType": "string",
-      "description": "Tytu≥ zak≥adki (CaptionHtml)",
+      "description": "Tytu≈Ç okna parametr√≥w (CaptionHtml)",
       "isRequired": true
     },
     "worker-datatype": {
@@ -73,18 +73,18 @@
       "description": "Priorytet (Priority)",
       "defaultValue": "100000"
     },
-    "$worker_registerparams$": {
+    "$worker_params_register$": {
       "type": "generated",
       "generator": "switch",
       "dataType": "int",
       "parameters": {
         "cases": [
           {
-            "condition": "worker-register-params",
+            "condition": "worker-params-register",
             "value": "1"
           },
           {
-            "condition": "!worker-register-params",
+            "condition": "!worker-params-register",
             "value": "0"
           }
         ]
@@ -101,7 +101,7 @@
     },
     {
       "include": "*.xml",
-      "condition": "worker-register-params",
+      "condition": "worker-params-register",
       "rename": {
         "Page.pageform.xml": "$fileinputname$WorkerParams.Ogolne.pageform.xml"
       }
