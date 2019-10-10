@@ -1,4 +1,4 @@
-{
+﻿{
   "$schema": "http://json.schemastore.org/template",
   "author": "Soneta",
   "classifications": [ "Soneta", "Addon", "Item", "ViewInfo" ],
@@ -6,7 +6,7 @@
   "groupIdentity": "Soneta.Addon.Item.ViewInfo",
   "name": "Soneta Addon Item ViewInfo",
   "shortName": "soneta-item-viewinfo",
-  "description": "Komponent ViewInfo dla produkt�w firmy Soneta",
+  "description": "Komponent ViewInfo dla produktów firmy Soneta",
   "tags": {
     "language": "C#",
     "type": "item"

@@ -1,4 +1,4 @@
-{
+﻿{
   "$schema": "http://json.schemastore.org/template",
   "author": "Soneta",
   "classifications": [ "Soneta", "Addon", "Project", "Tests", "NUnit" ],
