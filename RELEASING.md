@@ -25,7 +25,7 @@
 
 ### Część zautomatyzowana
 
-Proces publikacji paczki _NuGet_ uruchomiony został automatycznie. Jest realizowany przez [build_pipeline] i [pipeline wydania], których stan należy zweryfikować. Publikacja może oczekiwać na akceptację osób wskazanych w organizacji. W trakcie oczekiwania na akceptację można podjąć kolejne czynności opisane w następnej sekcji.
+Proces publikacji paczki _NuGet_ uruchomiony został automatycznie. Jest realizowany przez [build pipeline] i [pipeline wydania], których stan należy zweryfikować. Publikacja może oczekiwać na akceptację osób wskazanych w organizacji. W trakcie oczekiwania na akceptację można podjąć kolejne czynności opisane w następnej sekcji.
 
 ### Czynności ręczne po wydaniu
 
