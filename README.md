@@ -102,6 +102,17 @@ Następnie do folderu **.vscode** dodamy plik **launch.json** i wklejamy do nieg
 ```
 W pliku **launch.json** należy **ustawić ścieżkę enova365**, którą chcemy wykorzystywać do debugowania. Do debugowanie można użyć nie tylko **Soneta Explorer**, ale również **SonetaServer** lub inne produkty, które się pojawią.  Aby uruchomić **debugowanie** naciskamy **F5**.
 
+## Intellisense dla plików config, business i form.xml
+Visual Studio nie wymaga dodatkowej konfiguracji, natomiast Visual Studio Code nie obsługuje domyślnie podpowiedzi w plikach xml w oparciu o xsd. Dlatego należy doinstalować rozszerzenie **Xml Complete**. Działa on w oparciu o schemy udostępnione na naszej stronie internetowej. Nowo dodane pliki xml posiadają odpowiednie atrybuty, istniejące już w dodatku pliki należy uzupełnić o atrybuty xmlns:xsi, xmlns:xsd praz xsi:schemaLocation tak jak na poniższym przykładzie. 
+
+```
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.enova.pl/schema/form.xsd"
+          xsi:schemaLocation="http://www.enova.pl/schema/ http://www.enova.pl/schema/form.xsd"
+```
+
+
 # Współpraca
 W celu zaproponowania zmian należy stworzyć Pull Request do gałęzi develop. Po podjęciu decyzji o wydaniu nowej wersji branch develop zostanie zmergowany do mastera i dodatek zostanie automatycznie wydany.
 
