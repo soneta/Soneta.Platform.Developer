@@ -116,9 +116,7 @@ Visual Studio nie wymaga dodatkowej konfiguracji, natomiast Visual Studio Code n
 # Współpraca
 W celu zaproponowania zmian należy stworzyć Pull Request do gałęzi develop. Po podjęciu decyzji o wydaniu nowej wersji branch develop zostanie zmergowany do mastera i dodatek zostanie automatycznie wydany.
 
+# Proces wydawania nowych wersji
+Dokument [instrukcja wydania] szczegółowo opisuje potrzebne czynności zmierzające do wydania nowej wersji.
 
-
-
-
-
-
+[instrukcja wydania]: RELEASING.md
