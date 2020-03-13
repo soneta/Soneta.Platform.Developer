@@ -10,12 +10,4 @@
     <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
     <DefaultName>MyDbExtension</DefaultName>
   </TemplateData>
-  <TemplateContent>
-    <References>
-      <Reference>
-        <Assembly>System</Assembly>
-      </Reference>
-    </References>
-    <ProjectItem TargetFileName="$fileinputname$.business.xml" CustomTool="BusinessGenerator" ReplaceParameters="true">file.business.xml</ProjectItem>
-  </TemplateContent>
 </VSTemplate>
