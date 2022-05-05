@@ -13,8 +13,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="EnvDTE" Version="8.0.2" />
-    <PackageReference Include="EnvDTE80" Version="8.0.3" />
+    <PackageReference Include="EnvDTE" Version="17.0.32112.339" />
+    <PackageReference Include="EnvDTE80" Version="17.0.32112.339" />
     <PackageReference Include="VSSDK.TemplateWizardInterface" Version="12.0.4" />
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

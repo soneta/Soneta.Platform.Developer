@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="Soneta.Platform.Developer..0563df88-c11f-457d-9c25-b985cba99a5b" Version="3.0.3" Language="en-US" Publisher="Soneta" />
+        <Identity Id="Soneta.Platform.Developer..0563df88-c11f-457d-9c25-b985cba99a5b" Version="4.0.0" Language="en-US" Publisher="Soneta" />
         <DisplayName>Soneta Platform Developer</DisplayName>
         <Description xml:space="preserve">Project and Item Templates for developers writing Soneta platform plugins.</Description>
         <License>License.txt</License>
@@ -10,12 +10,18 @@
         <Tags>Soneta, Addon</Tags>
     </Metadata>
     <Prerequisites>
-        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,)" DisplayName="Visual Studio core editor" />
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,18.0)" DisplayName="Visual Studio core editor" />
     </Prerequisites>
     <Installation>
-        <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[15.0, 17.0)" />
-        <InstallationTarget Version="[15.0, 17.0)" Id="Microsoft.VisualStudio.Community" />
-        <InstallationTarget Version="[15.0, 17.0)" Id="Microsoft.VisualStudio.Enterprise" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[17.0, 18.0)" >
+		    <ProductArchitecture>amd64</ProductArchitecture>
+		</InstallationTarget>
+		<InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,18.0)">
+		    <ProductArchitecture>amd64</ProductArchitecture>
+		</InstallationTarget>
+        <InstallationTarget Version="[17.0, 18.0)" Id="Microsoft.VisualStudio.Enterprise" >
+		    <ProductArchitecture>amd64</ProductArchitecture>
+		</InstallationTarget>
     </Installation>
     <Dependencies>
         <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
