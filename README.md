@@ -3,9 +3,12 @@
 [![NuGet](https://img.shields.io/nuget/dt/Soneta.Platform.Developer.svg)](https://www.nuget.org/packages/Soneta.Platform.Developer/)
 [![Build Status](https://dev.azure.com/soneta/GitHub/_apis/build/status/Soneta.Platform.Developer%20CI?branchName=master)](https://dev.azure.com/soneta/GitHub/_build/latest?definitionId=3&branchName=master)
 
+# Link dla instalatora dodatku dla VS 2019
+[SonetaPlatformDeveloper 3.0.3](https://marketplace.visualstudio.com/_apis/public/gallery/publishers/enovaMSDN/vsextensions/SonetaPlatformDeveloper/3.0.3/vspackage)
+
 # Wstęp
 
-Soneta Platform Developer jest to rozszerzenie Visual Studio 2019 zawierające zestaw szablonów Visual Studio, które implementują elementy [Soneta.MsBuild.SDK](https://github.com/soneta/Soneta.MsBuild.SDK). Soneta Platform Developer promuje rozdzielanie logiczne tworzonych solucji rozszerzeń zgodnie z architekturą enova365, poprzez podział rozwiązania na osobne projekty warstwy logiki biznesowej, warstwy interfejsu użytkownika oraz warstwy testującej. Realizacja takiego uporządkowania polega na automatycznym utworzeniu przez SDK trzech projektów według typów, które odpowiadają wyżej wspomnianemu podziałowi. W celu zachowania pełnej elastyczności i swobody w projektowaniu twórca rozszerzenia enova365 ma możliwość utworzenia każdego typu projektu oddzielnie. <br>
+Soneta Platform Developer jest to rozszerzenie Visual Studio 2022 zawierające zestaw szablonów Visual Studio, które implementują elementy [Soneta.MsBuild.SDK](https://github.com/soneta/Soneta.MsBuild.SDK). Soneta Platform Developer promuje rozdzielanie logiczne tworzonych solucji rozszerzeń zgodnie z architekturą enova365, poprzez podział rozwiązania na osobne projekty warstwy logiki biznesowej, warstwy interfejsu użytkownika oraz warstwy testującej. Realizacja takiego uporządkowania polega na automatycznym utworzeniu przez SDK trzech projektów według typów, które odpowiadają wyżej wspomnianemu podziałowi. W celu zachowania pełnej elastyczności i swobody w projektowaniu twórca rozszerzenia enova365 ma możliwość utworzenia każdego typu projektu oddzielnie. <br>
 Podczas tworzenia nowego projektu użytkownik może wybrać jeden z poniższych szablonów:
 <ul>
     <li>Soneta Addon Project – to właściwy projekt logiki dodatku</li>
