@@ -14,9 +14,11 @@
   versionNumber - atrybut versionNumber określa numer wersji o danej nazwie. Liczba ta powinna być zwiększana zawsze, gdy dokonujemy zmian w module, który został opublikowany publicznie i konieczna będzie konwersja. Taka sama wartość atrybutu versionName może być przypisany wielu modułom. Ale wystarczy, że tylko jeden z nich będzie określał numer wersji atrybutem versionNumber. 
   -->
 
-  <import>Generator</import>
+  <import>..</import>
   <!-- 
-  Ten atrybut deklaruje folder, w którym będą poszukiwane pozostałe pliki business.xml. Wczytywane są wszystkie  pliki ze wskazanego foldera oraz z polderów podrzędnych. W tym przypadku pozostałe deklaracje business.xml znajdują się w podkatalogu Generator.
+  Ten atrybut deklaruje folder, w którym będą poszukiwane pozostałe pliki business.xml.
+  Wczytywane są wszystkie pliki ze wskazanego foldera oraz folderów podrzędnych.
+  W tym przypadku uwzględnione zostaną wszystkie deklaracje business.xml w folderze nadrzędnym i jego podrzędnych.
   -->
 
   <!-- 
