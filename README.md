@@ -29,7 +29,10 @@ Listę zainstalowanych dodatków możemy podejrzeć za pomocą polecenia:
 dotnet new -l
 ```
 Dodatek może być także zainstalowany z poziomu **Visual Studio**. Robimy to poprzez menu **Extensions --> Manage Extensions**, a następnie **wyszukujemy Soneta Platform Developer**.  Pobieramy i instalujemy nasz dodatek, w tym celu należy ponownie uruchomić Visual Studio. Po poprawnym zainstalowaniu naszego dodatku będziemy mieli możliwość stworzenia nowego projektu przy użyciu zainstalowanych szablonów.<br>
-
+**Uwaga!**<br>
+Wraz z pojawieniem się wersji Visual Studio 2022, szblony intalowane za pomocą komendy 'dotnet new' są widoczne także w Visual Studio. W celu poprawnego utworzenia zestawu projektów  w oknie konfiguracji nowego projektu należy **zaznaczyć** opcję **'Place solution and project in the same directory'.**
+<img src="Soneta.Platform.Developer\documentation\pictures\vs_configure_project
+.jpg">
 
 # Tworzenie nowego dodatku przy użyciu Visual Studio
 Tworzenie nowego dodatku w Visual Studio jest bardzo proste i sprowadza się jedynie do wybrania odpowiedniego szablonu. W celu utworzenie pełnego projektu dodatku zaleca się użycie szablonu **Soneta Addon**.
