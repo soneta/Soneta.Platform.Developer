@@ -13,7 +13,7 @@ namespace ItemTemplateWizard.Wizards
         private string solutionDir;
         private string destinationDir;
         private string projectSuffix;
-        private const string SolutionItemsFolderName = "Solution Items";
+        private const string solutionItemsFolderName = "Solution Items";
 
         public void BeforeOpeningFile(ProjectItem projectItem)
         {
@@ -29,8 +29,8 @@ namespace ItemTemplateWizard.Wizards
         }
         void AddFilesToSolution()
         {
-            var solutionItemsFolder = GetProjects(SolutionItemsFolderName).FirstOrDefault() ?? ((Solution2)dte.Solution).AddSolutionFolder(SolutionItemsFolderName);
-            foreach (var file in SolutionFiles)
+            var solutionItemsFolder = GetProjects(solutionItemsFolderName).FirstOrDefault() ?? ((Solution2)dte.Solution).AddSolutionFolder(solutionItemsFolderName);
+            foreach (var file in solutionFiles)
             {
                 solutionItemsFolder.ProjectItems.AddFromFile(file);
             }
@@ -42,7 +42,7 @@ namespace ItemTemplateWizard.Wizards
         public void RunFinished()
         {
         }
-        List<string> SolutionFiles = new List<string>();
+        List<string> solutionFiles = new List<string>();
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
         {
             dte = (DTE)automationObject;
@@ -55,14 +55,14 @@ namespace ItemTemplateWizard.Wizards
             if (!File.Exists(destinationFile))
             {
                 File.Copy(Path.Combine(directoryWithConfigFiles, "global.json"), destinationFile);
-                SolutionFiles.Add(destinationFile);
+                solutionFiles.Add(destinationFile);
             }
                 
             destinationFile = Path.Combine(solutionDir, "Directory.Build.props");
             if (!File.Exists(destinationFile))
             {
                 File.Copy(Path.Combine(directoryWithConfigFiles, "Directory.Build.Temp.props"), destinationFile);
-                SolutionFiles.Add(destinationFile);
+                solutionFiles.Add(destinationFile);
             }
                 
         }
