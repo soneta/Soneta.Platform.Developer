@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using EnvDTE;
+﻿using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio.TemplateWizard;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace ItemTemplateWizard.Wizards
 {
@@ -25,8 +25,16 @@ namespace ItemTemplateWizard.Wizards
                 ProcessConfigFiles(project);
             else
                 EnsureSuffix(project);
+            AddFilesToSolution();
         }
-
+        void AddFilesToSolution()
+        {
+            var solutionItemsFolder = GetProjects(SolutionItemsFolderName).FirstOrDefault() ?? ((Solution2)dte.Solution).AddSolutionFolder(SolutionItemsFolderName);
+            foreach (var file in SolutionFiles)
+            {
+                solutionItemsFolder.ProjectItems.AddFromFile(file);
+            }
+        }
         public void ProjectItemFinishedGenerating(ProjectItem projectItem)
         {
         }
@@ -34,13 +42,29 @@ namespace ItemTemplateWizard.Wizards
         public void RunFinished()
         {
         }
-
+        List<string> SolutionFiles = new List<string>();
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
         {
             dte = (DTE)automationObject;
             replacementsDictionary.TryGetValue("$solutiondirectory$", out solutionDir);
             replacementsDictionary.TryGetValue("$destinationdirectory$", out destinationDir);
             replacementsDictionary.TryGetValue("$projectsuffix$", out projectSuffix);
+            var directoryWithConfigFiles = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+            var destinationFile = Path.Combine(solutionDir, "global.json");
+            if (!File.Exists(destinationFile))
+            {
+                File.Copy(Path.Combine(directoryWithConfigFiles, "global.json"), destinationFile);
+                SolutionFiles.Add(destinationFile);
+            }
+                
+            destinationFile = Path.Combine(solutionDir, "Directory.Build.props");
+            if (!File.Exists(destinationFile))
+            {
+                File.Copy(Path.Combine(directoryWithConfigFiles, "Directory.Build.Temp.props"), destinationFile);
+                SolutionFiles.Add(destinationFile);
+            }
+                
         }
 
         public bool ShouldAddProjectItem(string filePath)
@@ -50,16 +74,6 @@ namespace ItemTemplateWizard.Wizards
 
         private void ProcessConfigFiles(Project project)
         {
-            var solutionItemsFolder = GetProjects(SolutionItemsFolderName).FirstOrDefault() ?? ((Solution2)dte.Solution).AddSolutionFolder(SolutionItemsFolderName);
-
-            foreach (ProjectItem item in project.ProjectItems)
-            {
-                var sourcePath = Path.Combine(destinationDir, item.Name);
-                var targetPath = Path.Combine(solutionDir, item.Name);
-                File.Move(sourcePath, targetPath);
-                solutionItemsFolder.ProjectItems.AddFromFile(targetPath);
-            }
-
             dte.Solution.Remove(project);
 
             if (destinationDir == solutionDir)
