@@ -16,7 +16,6 @@
   </TemplateData>
   <TemplateContent>
     <ProjectCollection>
-      <ProjectTemplateLink ProjectName="$safeprojectname$.Config">SonetaAddonProject\SonetaAddon.Config.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$safeprojectname$">SonetaAddonProject\SonetaAddon.Project.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$safeprojectname$.UI">SonetaAddonProject\SonetaAddon.UI.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$safeprojectname$.Tests">SonetaAddonProject\SonetaAddon.Tests.vstemplate</ProjectTemplateLink>

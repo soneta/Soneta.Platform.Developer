@@ -16,8 +16,7 @@
   </TemplateData>
   <TemplateContent>
     <Project File="SonetaAddonProject.csproj" ReplaceParameters="true">
-      <ProjectItem ReplaceParameters="true" TargetFileName="Directory.Build.props">Directory.Build.props</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="global.json">global.json</ProjectItem>
+		<Folder Name="" TargetFolderName=""/>
     </Project>
     <CustomParameters>
       <CustomParameter Name="$projectsuffix$" Value="Config"/>
