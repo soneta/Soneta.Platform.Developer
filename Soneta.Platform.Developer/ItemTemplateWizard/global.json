@@ -1,5 +1,5 @@
 ﻿{
   "msbuild-sdks": {
-    "Soneta.Sdk": "1.1.2"
+    "Soneta.Sdk": "1.1.3-prerelease-g6df1d5d2c7"
   }
 }

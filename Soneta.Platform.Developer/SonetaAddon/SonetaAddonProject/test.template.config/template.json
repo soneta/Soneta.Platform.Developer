@@ -16,7 +16,7 @@
   "sources": [
     {
       "include": [
-        "SonetaAddonProject.csproj"
+        "SonetaTestAddonProject.csproj"
       ],
       "target": ".\\SonetaAddonProject.Tests",
       "rename": {
