@@ -3,4 +3,13 @@
   <PropertyGroup>
     <TargetFramework>$(SonetaTargetFramework)</TargetFramework>
   </PropertyGroup>
+  <ItemGroup>
+    <ExcludeFromPackage Remove="SonetaAddonProject\SonetaTestAddonProject.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <IncludeInSolution Remove="SonetaAddonProject\SonetaTestAddonProject.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SonetaAddonProject\SonetaTestAddonProject.csproj" />
+  </ItemGroup>
 </Project>

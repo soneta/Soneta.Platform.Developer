@@ -38,7 +38,7 @@
     },
     {
       "include": [
-        "SonetaAddonProject/SonetaAddonProject.csproj"
+        "SonetaAddonProject/SonetaTestAddonProject.csproj"
       ],
       "rename": {
         "SonetaAddonProject": "SonetaAddonProject.Tests"
