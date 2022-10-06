@@ -16,7 +16,7 @@
     <Icon>SonetaAddon.ico</Icon>
   </TemplateData>
   <TemplateContent>
-    <Project File="SonetaTestAddonProject.csproj" ReplaceParameters="true">
+    <Project File="SonetaAddonProject.Tests.csproj" ReplaceParameters="true">
       <Folder Name="" TargetFolderName=""/>
     </Project>
     <CustomParameters>

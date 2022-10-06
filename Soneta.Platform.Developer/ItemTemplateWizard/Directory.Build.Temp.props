@@ -3,6 +3,6 @@
   <PropertyGroup>
     <SonetaPackageVersion>2206.3.5</SonetaPackageVersion>
     <SonetaTargetFramework>netstandard2.0</SonetaTargetFramework>
-	<SonetaTestTargetFramework>net472</SonetaTestTargetFramework>
+	<SonetaTestsTargetFramework>net472</SonetaTestsTargetFramework>
   </PropertyGroup>
 </Project>
