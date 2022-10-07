@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace ItemTemplateWizard.Wizards
 {
-    public class WorkerItemTemplateWizard : BaseItemTemplateWizard, IWizard
+    public class WorkerItemTemplateWizard : IWizard
     {
         private bool _registerWorkerParamatersClass;
         public void BeforeOpeningFile(ProjectItem projectItem) { }
@@ -18,7 +18,6 @@ namespace ItemTemplateWizard.Wizards
         
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams) 
         {
-            Dte = (DTE)automationObject;
             _registerWorkerParamatersClass = false;
 
             var form = new WorkerWizardForm();
@@ -34,7 +33,6 @@ namespace ItemTemplateWizard.Wizards
             replacementsDictionary.Add("$worker_params_caption$", form.get_Caption());
             replacementsDictionary.Add("$worker_params_register$", _registerWorkerParamatersClass ? "1" : "0");
 
-            initDefaultNamespace(replacementsDictionary);
         }
 
         public void ProjectFinishedGenerating(Project project)

@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TemplateWizard;
 
 namespace ItemTemplateWizard.Wizards
 {
-    public class DashboardItemTemplateWizard : BaseItemTemplateWizard, IWizard
+    public class DashboardItemTemplateWizard : IWizard
     {
         public void BeforeOpeningFile(ProjectItem projectItem) { }
         public void ProjectFinishedGenerating(Project project) { }
@@ -16,8 +16,6 @@ namespace ItemTemplateWizard.Wizards
         
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams) 
         {
-            Dte = (DTE)automationObject;
-
             var form = new DashboardWizardForm();
             var result = form.ShowDialog();
             if (result != DialogResult.OK)
@@ -26,8 +24,6 @@ namespace ItemTemplateWizard.Wizards
             // add an entry to the dictionary to specify the string used for the $viewinfotablename$ token 
             replacementsDictionary.Add("$dashboard_priority$", form.get_Priority());
             replacementsDictionary.Add("$dashboard_caption$", form.get_Caption());
-
-            initDefaultNamespace(replacementsDictionary);
         }
 
     }
