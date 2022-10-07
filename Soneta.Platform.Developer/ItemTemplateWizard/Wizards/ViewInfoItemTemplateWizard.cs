@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TemplateWizard;
 
 namespace ItemTemplateWizard.Wizards
 {
-    public class ViewInfoItemTemplateWizard : BaseItemTemplateWizard, IWizard
+    public class ViewInfoItemTemplateWizard : IWizard
     {
         public void BeforeOpeningFile(ProjectItem projectItem) { } 
         public void ProjectFinishedGenerating(Project project) { } 
@@ -15,7 +15,6 @@ namespace ItemTemplateWizard.Wizards
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams) 
         {
-            Dte = (DTE)automationObject;
 
             var form = new ViewInfoWizardForm();
             var result = form.ShowDialog();
@@ -26,8 +25,7 @@ namespace ItemTemplateWizard.Wizards
             replacementsDictionary.Add("$viewinfo_tablename$", form.get_TableName());
             replacementsDictionary.Add("$viewinfo_description$", form.get_Description());
             replacementsDictionary.Add("$viewinfo_priority$", form.get_Priority());
-
-            initDefaultNamespace(replacementsDictionary);
+ 
         } 
 
         public bool ShouldAddProjectItem(string filePath) { return true; } 

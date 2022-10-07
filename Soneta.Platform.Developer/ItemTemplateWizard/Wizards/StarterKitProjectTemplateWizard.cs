@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TemplateWizard;
 
 namespace ItemTemplateWizard.Wizards
 {
-    public class StarterKitProjectTemplateWizard : BaseItemTemplateWizard, IWizard
+    public class StarterKitProjectTemplateWizard : IWizard
     {
         private bool _addDbExtension;
         public void BeforeOpeningFile(ProjectItem projectItem) { } 
@@ -16,7 +16,7 @@ namespace ItemTemplateWizard.Wizards
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams) 
         {
-            Dte = (DTE)automationObject;
+
             var result = MessageBox.Show(null, "Czy uzupełnić projekt o elementy rozszerzenia bazy danych ?", "Uzupełnienie dodatku", 
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             _addDbExtension = result == DialogResult.Yes;
