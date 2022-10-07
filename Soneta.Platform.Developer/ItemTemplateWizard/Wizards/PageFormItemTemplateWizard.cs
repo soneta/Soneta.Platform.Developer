@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TemplateWizard;
 
 namespace ItemTemplateWizard.Wizards
 {
-    public class PageFormItemTemplateWizard : BaseItemTemplateWizard, IWizard
+    public class PageFormItemTemplateWizard : IWizard
     {
         private bool _registerFolder;
         public void BeforeOpeningFile(ProjectItem projectItem) { } 
@@ -16,7 +16,6 @@ namespace ItemTemplateWizard.Wizards
 
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams) 
         {
-            Dte = (DTE)automationObject;
 
             var form = new PageFormWizardForm();
             var result = form.ShowDialog();
@@ -31,7 +30,6 @@ namespace ItemTemplateWizard.Wizards
             replacementsDictionary.Add("$pageform_pagename$", form.get_PageName());
             replacementsDictionary.Add("$pageform_registerfolder$", _registerFolder ? "1" : "0");
            
-            initDefaultNamespace(replacementsDictionary);
        } 
 
         public bool ShouldAddProjectItem(string filePath) { return true; } 
