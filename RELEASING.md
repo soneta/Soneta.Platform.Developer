@@ -25,7 +25,7 @@
 
 ### Część zautomatyzowana
 
-Proces publikacji paczki _NuGet_ uruchomiony został automatycznie. Jest realizowany przez [pipeline wydania], którego stan należy zweryfikować. Publikacja może oczekiwać na akceptację osób wskazanych w organizacji. W trakcie oczekiwania na akceptację można podjąć kolejne czynności opisane w następnej sekcji.
+Proces publikacji paczki _NuGet_ uruchomiony został automatycznie. Jest realizowany przez [build pipeline] i [pipeline wydania], których stan należy zweryfikować. Publikacja może oczekiwać na akceptację osób wskazanych w organizacji. W trakcie oczekiwania na akceptację można podjąć kolejne czynności opisane w następnej sekcji.
 
 ### Czynności ręczne po wydaniu
 
@@ -48,6 +48,7 @@ Proces publikacji paczki _NuGet_ uruchomiony został automatycznie. Jest realizo
 [repozytorium]: https://github.com/soneta/Soneta.Platform.Developer
 [Soneta.SDK]: https://github.com/soneta/Soneta.MsBuild.SDK
 [Soneta.SDK na nuget.org]: https://www.nuget.org/packages/Soneta.Sdk
+[build pipeline]: https://dev.azure.com/soneta/GitHub/_build?definitionId=3&_a=summary
 [pipeline wydania]: https://dev.azure.com/soneta/GitHub/_release?_a=releases&view=mine&definitionId=3
 [Directory.Build.props]: Soneta.Platform.Developer/SonetaAddon/SonetaAddonProject/Directory.Build.props
 [global.json]: Soneta.Platform.Developer/SonetaAddon/SonetaAddonProject/global.json
