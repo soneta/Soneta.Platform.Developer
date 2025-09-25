@@ -11,58 +11,83 @@
     "language": "C#",
     "type": "item"
   },
-  "sourceName": "$fileinputname$",
-  "preferNameDirectory": true,
+  "preferNameDirectory": false,
   "symbols": {
     "default-namespace": {
       "type": "bind",
-      "binding": "name",
-      "replaces": "$defaultnamespace$",
-      "dataType": "string"
+      "binding": "msbuild:RootNamespace",
+      "replaces": "%NAMESPACE%",
+      "description": "Przestrzeń nazw dla klasy dashboardu",
+      "msbuild": "RootNamespace"
     },
-    "root-namespace": {
-      "type": "bind",
-      "binding": "name",
-      "replaces": "$rootnamespace$",
-      "dataType": "string"
+    "extender-name": {
+      "type": "parameter",
+      "dataType": "string",
+      "description": "Własna nazwa tworzonego extendera dla dashboard"
+    },
+    "computed-name": {
+      "type": "generated",
+      "generator": "coalesce",
+      "replaces": "%MODULENAME%",
+      "fileRename": "file",
+      "parameters": {
+        "sourceVariableName": "extender-name",
+        "fallbackVariableName": "default-namespace"
+      }
+    },
+    "safe-computed-name": {
+      "type": "generated",
+      "generator": "regex",
+      "parameters": {
+        "source": "computed-name",
+        "steps": [
+          {
+            "regex": "^(.*?)\\..*",
+            "replacement": "$1"
+          }
+        ]
+      },
+      "replaces": "%MODULENAME%",
+      "fileRename": "file"
     },
     "dashboard-class": {
-      "type": "derived",
-      "valueSource": "name",
-      "valueTransform": "AddExtenderSuffix",
-      "replaces": "$dashboard_class$",
-      "dataType": "string"
+      "type": "generated",
+      "generator": "join",
+      "replaces": "%DASHBOARDCLASS%",
+      "fileRename": "Class",
+      "parameters": {
+        "symbols": [
+          {
+            "type": "ref",
+            "value": "safe-computed-name"
+          },
+          {
+            "type": "const",
+            "value": "Extender"
+          }
+        ],
+        "separator": "",
+        "removeEmptyValues": true
+      }
     },
     "dashboard-caption": {
       "type": "parameter",
-      "replaces": "$dashboard_caption$",
+      "replaces": "%DASHBOARDCAPTION%",
       "dataType": "string",
-      "description": "Tytuł dashboard (CaptionHtml)",
-      "isRequired": true
+      "defaultValue": "MyDashboard",
+      "description": "Tytuł dashboard (CaptionHtml)"
     },
     "dashboard-priority": {
       "type": "parameter",
-      "replaces": "$dashboard_priority$",
+      "replaces": "%DASHBOARDPRIORITY%",
       "dataType": "string",
       "description": "Priorytet (Priority)",
       "defaultValue": "100000"
     }
   },
-  "defaultName": "MyDashboard",
   "sources": [
     {
-      "include": [ "*.cs", "*.xml" ],
-      "rename": {
-        "Class.cs": "$fileinputname$.cs",
-        "Page.pageform.xml": "$fileinputname$.pageform.xml"
-      }
+      "include": [ "*.cs", "*.xml" ]
     }
-  ],
-  "forms": {
-    "AddExtenderSuffix": {
-      "identifier": "replace",
-      "replacement": "Extender",
-      "pattern": "$"
-    }
-  }
+  ]
 }

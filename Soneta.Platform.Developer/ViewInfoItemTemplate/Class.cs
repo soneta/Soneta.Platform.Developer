@@ -1,38 +1,37 @@
 ﻿using System;
-$if$ ($targetframeworkversion$ >= 3.5)using System.Linq;
-$endif$
+using System.Linq;
 using Soneta.Business;
 using Soneta.Business.UI;
-using $rootnamespace$;
+using %NAMESPACE%;
 
-[assembly: FolderView("$defaultnamespace$/$safeitemrootname$ViewInfo",
-    Priority = $viewinfo_priority$,
-    Description = "$viewinfo_description$",
-    TableName = "$viewinfo_tablename$",
-    ViewType = typeof($safeitemrootname$ViewInfo)
+[assembly: FolderView("%NAMESPACE%/%VIEWINFOCLASS%",
+    Priority = %VIEWINFOPRIORITY%,
+    Description = "%VIEWINFODESCRYPTION%",
+    TableName = "%VIEWINFOTABLENAME%",
+    ViewType = typeof(%VIEWINFOCLASS%)
 )]
 
-namespace $rootnamespace$
+namespace %NAMESPACE%
 {
-	public class $safeitemrootname$ViewInfo : ViewInfo
+	public class %VIEWINFOCLASS% : ViewInfo
 	{
-        public $safeitemrootname$ViewInfo()
+        public %VIEWINFOCLASS%()
         {
             // View wiążemy z odpowiednią definicją viewform.xml poprzez property ResourceName
-            ResourceName = "$safeitemrootname$";
+            ResourceName = "%VIEWINFONAME%";
 
             // Inicjowanie contextu
-            InitContext += $safeitemrootname$ViewInfo_InitContext;
+            InitContext += %VIEWINFOCLASS%_InitContext;
 
             // Tworzenie view zawierającego konkretne dane
-            CreateView += $safeitemrootname$ViewInfo_CreateView;
+            CreateView += %VIEWINFOCLASS%_CreateView;
         }
 
-        void $safeitemrootname$ViewInfo_InitContext(object sender, ContextEventArgs args) {
+        void %VIEWINFOCLASS%_InitContext(object sender, ContextEventArgs args) {
         }
 
-        void $safeitemrootname$ViewInfo_CreateView(object sender, CreateViewEventArgs args) {
-            $safeitemrootname$ViewInfo.WParams parameters;
+        void %VIEWINFOCLASS%_CreateView(object sender, CreateViewEventArgs args) {
+            %VIEWINFOCLASS%.WParams parameters;
             if (!args.Context.Get(out parameters)) 
                 return;
             args.View = ViewCreate(parameters);

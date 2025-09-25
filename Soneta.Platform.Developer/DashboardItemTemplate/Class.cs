@@ -2,22 +2,18 @@
 using Soneta.Business;
 using Soneta.Business.App;
 using Soneta.Tools;
-using $rootnamespace$;
+using %NAMESPACE%;
 
 // Sposób w jaki należy zarejestrować extender, który później zostanie użyty w interfejsie.
-[assembly: Worker(typeof($dashboard_class$))]
-namespace $rootnamespace$
+[assembly: Worker(typeof(%DASHBOARDCLASS%))]
+namespace %NAMESPACE%
 {
-	public class $dashboard_class$
+	public class %DASHBOARDCLASS%
 	{
         [Context]
         public Login Login { get; set; }
 
-        public bool IsVisible {
-            get {
-                var version = typeof (CoreTools).Assembly.GetName().Version;
-                return BusApplication.Instance.Is365 && version.Major >= 10 && version.Minor >= 5;
-            }
-        }
+        public bool IsVisible => true;
+       
 	}
 }

@@ -10,7 +10,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Description>Szablony przeznaczone dla developer'ów piszących dodatki do produktów firmy Soneta.</Description>
     <IncludeBuildOutput>false</IncludeBuildOutput>
-    <PackageTags>Soneta</PackageTags>
+    <PackageTags>Soneta;dotnet-new;templates</PackageTags>
     <PackageType>Template</PackageType>
     <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
@@ -21,6 +21,15 @@
       <Pack>true</Pack>
       <PackagePath>Soneta.Platform.Developer</PackagePath>
     </Content>
+    <Content Remove="..\SonetaAddon\SonetaAddonProject\config.template.config\dotnetcli.host.json" />
+    <Content Remove="..\SonetaAddon\SonetaAddonProject\config.template.config\template.json" />
+    <Content Remove="..\SonetaAddon\SonetaAddonProject\project.template.config\dotnetcli.host.json" />
+    <Content Remove="..\SonetaAddon\SonetaAddonProject\project.template.config\template.json" />
+    <Content Remove="..\SonetaAddon\SonetaAddonProject\SonetaAddonProject.Tests.csproj" />
+    <Content Remove="..\SonetaAddon\SonetaAddonProject\test.template.config\dotnetcli.host.json" />
+    <Content Remove="..\SonetaAddon\SonetaAddonProject\test.template.config\template.json" />
+    <Content Remove="..\SonetaAddon\SonetaAddonProject\ui.template.config\dotnetcli.host.json" />
+    <Content Remove="..\SonetaAddon\SonetaAddonProject\ui.template.config\template.json" />
     <Content Remove="@(ExcludeFromPackage)" />
   </ItemGroup>
   <ItemGroup>

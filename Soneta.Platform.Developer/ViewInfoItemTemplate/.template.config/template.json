@@ -11,70 +11,88 @@
     "language": "C#",
     "type": "item"
   },
-  "sourceName": "$fileinputname$",
-  "preferNameDirectory": true,
+  "preferNameDirectory": false,
   "symbols": {
-    "safe-item-root-name": {
-      "type": "bind",
-      "binding": "name",
-      "replaces": "$safeitemrootname$",
-      "dataType": "string"
-    },
     "default-namespace": {
       "type": "bind",
-      "binding": "name",
-      "replaces": "$defaultnamespace$",
-      "dataType": "string"
+      "binding": "msbuild:RootNamespace",
+      "replaces": "%NAMESPACE%",
+      "description": "Przestrzeń nazw dla widoku",
+      "msbuild": "RootNamespace"
     },
-    "root-namespace": {
-      "type": "bind",
-      "binding": "name",
-      "replaces": "$rootnamespace$",
-      "dataType": "string"
+    "viewinfo-name": {
+      "type": "parameter",
+      "dataType": "string",
+      "description": "Nazwa tworzonej klasy dla tworzonego widoku"
+    },
+    "computed-name": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "viewinfo-name",
+        "fallbackVariableName": "default-namespace"
+      }
+    },
+    "safe-computed-name": {
+      "type": "generated",
+      "generator": "regex",
+      "parameters": {
+        "source": "computed-name",
+        "steps": [
+          {
+            "regex": "^(.*?)\\..*",
+            "replacement": "$1"
+          }
+        ]
+      },
+      "replaces": "%VIEWINFONAME%",
+      "fileRename": "Page"
+    },
+    "viewinfo-class": {
+      "type": "generated",
+      "generator": "join",
+      "replaces": "%VIEWINFOCLASS%",
+      "fileRename": "Class",
+      "parameters": {
+        "symbols": [
+          {
+            "type": "ref",
+            "value": "safe-computed-name"
+          },
+          {
+            "type": "const",
+            "value": "ViewInfo"
+          }
+        ],
+        "separator": "",
+        "removeEmptyValues": true
+      }
     },
     "viewinfo-tablename": {
       "type": "parameter",
-      "replaces": "$viewinfo_tablename$",
+      "replaces": "%VIEWINFOTABLENAME%",
       "dataType": "string",
       "description": "Nazwa tabeli (Table)",
-      "isRequired": true
+      "defaultValue": "Soneta.Towary.Towary"
     },
     "viewinfo-description": {
       "type": "parameter",
-      "replaces": "$viewinfo_description$",
+      "replaces": "%VIEWINFODESCRYPTION%",
       "dataType": "string",
       "description": "Opis (Description)",
       "defaultValue": ""
     },
     "viewinfo-priority": {
       "type": "parameter",
-      "replaces": "$viewinfo_priority$",
+      "replaces": "%VIEWINFOPRIORITY%",
       "dataType": "string",
       "description": "Priorytet (Priority)",
       "defaultValue": "100000"
     }
   },
-  "defaultName": "MyViewInfo",
   "sources": [
     {
-      "include": [ "*.cs", "*.xml" ],
-      "rename": {
-        "Class.cs": "$fileinputname$.cs",
-        "Page.viewform.xml": "$fileinputname$.viewform.xml"
-      }
+      "include": [ "*.cs", "*.xml" ]
     }
-  ],
-  "SpecialCustomOperations": {
-    "*": {
-      "operations": [
-        {
-          "type": "conditional",
-          "configuration": {
-            "if": [ "$if$" ],
-            "endif": [ "$endif$" ]
-          }
-        }
-      ]
-    }
-  }
+  ]
 }

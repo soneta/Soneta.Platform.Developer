@@ -11,100 +11,99 @@
     "language": "C#",
     "type": "item"
   },
-  "sourceName": "$fileinputname$",
-  "preferNameDirectory": true,
+  "preferNameDirectory": false,
+
   "symbols": {
+    "workername": {
+      "type": "parameter",
+      "dataType": "string",
+      "description": "Własna nazwa klasy workera - wprowadzamy bez słowa worker"
+    },
     "default-namespace": {
       "type": "bind",
-      "binding": "name",
-      "replaces": "$defaultnamespace$",
-      "dataType": "string"
+      "binding": "msbuild:RootNamespace",
+      "description": "Przestrzeń nazw dla workera",
+      "msbuild": "RootNamespace",
+      "replaces": "%NAMESPACE%"
     },
-    "root-namespace": {
-      "type": "bind",
-      "binding": "name",
-      "replaces": "$rootnamespace$",
-      "dataType": "string"
+    "computed-name": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "workername",
+        "fallbackVariableName": "default-namespace"
+      }
     },
-    "worker-root": {
-      "type": "bind",
-      "binding": "name",
-      "replaces": "$worker_root$",
-      "dataType": "string"
+    "safe-computed-name": {
+      "type": "generated",
+      "generator": "regex",
+      "parameters": {
+        "source": "computed-name",
+        "steps": [
+          {
+            "regex": "^(.*?)\\..*",
+            "replacement": "$1"
+          }
+        ]
+      }
     },
-    "worker-class": {
-      "type": "derived",
-      "valueSource": "name",
-      "valueTransform": "AddWorkerSuffix",
-      "replaces": "$worker_class$",
-      "dataType": "string"
+    "workerClassName": {
+      "type": "generated",
+      "generator": "join",
+      "replaces": "%WORKERCLASSNAME%",
+      "fileRename": "Class",
+      "description": "Nazwa klasy workera",
+      "parameters": {
+        "symbols": [
+          {
+            "type": "ref",
+            "value": "safe-computed-name"
+          },
+          {
+            "type": "const",
+            "value": "Worker"
+          }
+        ],
+        "separator": "",
+        "removeEmptyValues": true
+      }
     },
-    "worker-params-class": {
-      "type": "derived",
-      "valueSource": "name",
-      "valueTransform": "AddWorkerParamsSuffix",
-      "replaces": "$worker_params_class$",
-      "dataType": "string"
-    },
-    "worker-params-register": {
+
+    "worker-params": {
       "type": "parameter",
       "dataType": "bool",
-      "defaultValue": "false",
+      "defaultValue": true,
       "description": "Generuj parametry workera"
     },
     "worker-params-caption": {
       "type": "parameter",
-      "replaces": "$worker_params_caption$",
+      "replaces": "%WORKERPARAMSCAPTION%",
       "dataType": "string",
-      "description": "Tytuł okna parametrów (CaptionHtml)",
-      "isRequired": true
+      "defaultValue": "MyWorker with Params",
+      "description": "Tytuł okna parametrów (CaptionHtml)"
     },
     "worker-datatype": {
       "type": "parameter",
-      "replaces": "$worker_datattype$",
+      "replaces": "%WORKERDATATYPE%",
       "dataType": "string",
-      "description": "Typ danych (DataType)",
-      "isRequired": true
+      "defaultValue": "Soneta.Towary.Towar",
+      "description": "Typ danych (DataType) np. Soneta.Zadania.Zadanie , Soneta.CRM.Kontrahent"
     },
     "worker-priority": {
       "type": "parameter",
-      "replaces": "$worker_priority$",
+      "replaces": "%WORKERPRORITY%",
       "dataType": "string",
       "description": "Priorytet (Priority)",
       "defaultValue": "100000"
-    },
-    "$worker_params_register$": {
-      "type": "generated",
-      "generator": "switch",
-      "dataType": "int",
-      "parameters": {
-        "cases": [
-          {
-            "condition": "worker-params-register",
-            "value": "1"
-          },
-          {
-            "condition": "!worker-params-register",
-            "value": "0"
-          }
-        ]
-      }
     }
   },
-  "defaultName": "MyWorker",
   "sources": [
     {
-      "include": "*.cs",
-      "rename": {
-        "Class.cs": "$fileinputname$Worker.cs"
-      }
+      "include": "*.cs"
     },
     {
       "include": "*.xml",
-      "condition": "worker-params-register",
-      "rename": {
-        "Page.pageform.xml": "$fileinputname$WorkerParams.Ogolne.pageform.xml"
-      }
+      "condition": "worker-params"
     }
   ],
   "SpecialCustomOperations": {
@@ -118,18 +117,6 @@
           }
         }
       ]
-    }
-  },
-  "forms": {
-    "AddWorkerSuffix": {
-      "identifier": "replace",
-      "replacement": "Worker",
-      "pattern": "$"
-    },
-    "AddWorkerParamsSuffix": {
-      "identifier": "replace",
-      "replacement": "WorkerParams",
-      "pattern": "$"
     }
   }
 }

@@ -11,35 +11,47 @@
     "language": "C#",
     "type": "item"
   },
-  "sourceName": "$fileinputname$",
-  "preferNameDirectory": true,
+  "preferNameDirectory": false,
   "symbols": {
-    "safe-item-root-name": {
-      "type": "bind",
-      "binding": "name",
-      "replaces": "$safeitemrootname$",
-      "dataType": "string"
-    },
     "default-namespace": {
       "type": "bind",
-      "binding": "name",
-      "replaces": "$defaultnamespace$",
-      "dataType": "string"
+      "binding": "msbuild:RootNamespace",
+      "replaces": "%NAMESPACE%",
+      "description": "Przestrzeń nazw dla workera",
+      "msbuild": "RootNamespace"
     },
-    "root-namespace": {
-      "type": "bind",
-      "binding": "name",
-      "replaces": "$rootnamespace$",
-      "dataType": "string"
+    "module-name": {
+      "type": "parameter",
+      "dataType": "string",
+      "description": "Własna nazwa tworzonego modułu"
+    },
+    "computed-name": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "module-name",
+        "fallbackVariableName": "default-namespace"
+      }
+    },
+    "safe-computed-name": {
+      "type": "generated",
+      "generator": "regex",
+      "parameters": {
+        "source": "computed-name",
+        "steps": [
+          {
+            "regex": "^(.*?)\\..*",
+            "replacement": "$1"
+          }
+        ]
+      },
+      "replaces": "%MODULENAME%",
+      "fileRename": "file"
     }
   },
-  "defaultName": "MyDbExtension",
   "sources": [
     {
-      "include": [ "*.xml" ],
-      "rename": {
-        "file.business.xml": "$fileinputname$.business.xml"
-      }
+      "include": [ "*.xml" ]
     }
   ]
 }

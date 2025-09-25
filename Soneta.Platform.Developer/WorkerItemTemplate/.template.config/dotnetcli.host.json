@@ -4,6 +4,9 @@
     "worker-class": {
       "isHidden": true
     },
+    "workername": {
+      "shortName": "wn"
+    },
     "worker-params-class": {
       "isHidden": true
     },
@@ -11,16 +14,16 @@
       "isHidden": true
     },
     "worker-params-register": {
-      "shortName": "wpr"
+      "shortName": "p"
     },
     "worker-params-caption": {
-      "shortName": "wpc"
+      "shortName": "pc"
     },
     "worker-datatype": {
-      "shortName": "wd"
+      "shortName": "t"
     },
     "worker-priority": {
-      "shortName": "wp"
+      "shortName": "pr"
     }
   }
 }
