@@ -5,16 +5,7 @@
     <MinimumVisualStudioVersion>17.0</MinimumVisualStudioVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <EnableDefaultItems>false</EnableDefaultItems>
-    <IsVSIXProject>false</IsVSIXProject>
-    <IsVSIXProject Condition="!Exists('source.extension.vsixmanifest')">false</IsVSIXProject>
     <GeneratePkgDefFile>false</GeneratePkgDefFile>
-    <IncludeAssemblyInVSIXContainer>false</IncludeAssemblyInVSIXContainer>
-    <IncludeDebugSymbolsInVSIXContainer>false</IncludeDebugSymbolsInVSIXContainer>
-    <IncludeDebugSymbolsInLocalVSIXDeployment>false</IncludeDebugSymbolsInLocalVSIXDeployment>
-    <CreateVsixContainer>$(IsVSIXProject)</CreateVsixContainer>
-    <DeployExtension>false</DeployExtension>
-    <DeployVSTemplates>false</DeployVSTemplates>
-    <CopyVsixManifestToOutput>false</CopyVsixManifestToOutput>
     <CopyBuildOutputToOutputDirectory>false</CopyBuildOutputToOutputDirectory>
     <CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory>
     <PackageContent>..\**</PackageContent>
