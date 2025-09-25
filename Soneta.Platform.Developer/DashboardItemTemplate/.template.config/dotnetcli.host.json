@@ -9,6 +9,9 @@
     },
     "dashboard-class": {
       "isHidden": "true"
+    },
+    "extender-name": {
+      "shortName": "en"
     }
   }
 }

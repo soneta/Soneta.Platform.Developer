@@ -3,4 +3,16 @@
   <PropertyGroup>
     <TargetFramework>$(SonetaTargetFramework)</TargetFramework>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="SonetaAddonProject\Directory.Build.props">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SonetaAddonProject\global.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SonetaAddonProject\Licence.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SonetaAddon.sln" />
+  </ItemGroup>
 </Project>

@@ -1,20 +1,45 @@
 ﻿{
   "$schema": "http://json.schemastore.org/template",
   "author": "Soneta",
-  "classifications": [ "Soneta", "Addon" ],
+  "classifications": [ "Soneta", "Addon", "AspNetCore", "Solution" ],
   "name": "Soneta Addon",
-  "description": "Kompletny zestaw projektów przeznaczony do tworzenia dodatków dla produktów firmy Soneta.",
+  "description": "Solucja z kompletnym zestawem projektów, przeznaczona do tworzenia dodatków dla produktów firmy Soneta.",
   "groupIdentity": "Soneta.Addon",
   "identity": "Soneta.Addon",
   "shortName": "soneta-addon",
   "tags": {
     "language": "C#",
-    "type": "project"
+    "type": "solution"
   },
-  "sourceName": "SonetaAddonProject",
+  "sourceName": "SonetaAddon",
   "preferNameDirectory": true,
-  "defaultName": "SonetaAddonProject",
+  "defaultName": "SonetaAddon",
+  "guids": [
+    "71E907B0-1676-4792-9D52-D1275FF05A7C",
+    "730A432C-4A8D-4167-95E5-71716A7169DE",
+    "1A514B88-D796-4C33-B17D-1122A97459D8",
+    "F66EDD30-7B16-44FE-B83F-EF1574B4D8B3"
+  ],
+  "symbols": {
+    "noTest": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Wyłącz generowanie projektu testowego"
+    },
+    "noUI": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Wyłącz generowanie projektu UI"
+    }
+  },
   "sources": [
+    {
+      "include": [
+        "SonetaAddon.sln"
+      ]
+    },
     {
       "source": "SonetaAddonProject/",
       "include": [
@@ -25,21 +50,43 @@
     {
       "include": [
         "SonetaAddonProject/SonetaAddonProject.csproj"
-      ]
+      ],
+      "rename": {
+        "SonetaAddonProject": "SonetaAddon"
+      }
     },
     {
+      "condition": "(!noUI)",
       "include": [
         "SonetaAddonProject/SonetaAddonProject.csproj",
         "SonetaAddonProject/EnsureSonetaTypesReferenceClass.cs"
       ],
       "rename": {
-        "SonetaAddonProject": "SonetaAddonProject.UI"
+        "SonetaAddonProject": "SonetaAddon.UI"
       }
     },
     {
+      "condition": "(!noTest)",
       "include": [
-        "SonetaAddonProject/SonetaAddonProject.Tests.csproj"
+        "SonetaAddonProject/SonetaAddonProject.csproj",
+        "SonetaAddonProject/Licence.txt"
+      ],
+      "rename": {
+        "SonetaAddonProject": "SonetaAddon.Tests"
+      }
+    }
+  ],
+  "SpecialCustomOperations": {
+    "*": {
+      "operations": [
+        {
+          "type": "conditional",
+          "configuration": {
+            "if": [ "$if$" ],
+            "endif": [ "$endif$" ]
+          }
+        }
       ]
     }
-  ]
+  }
 }

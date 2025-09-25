@@ -1,32 +1,31 @@
 ﻿using System;
 using Soneta.Business;
 using Soneta.Business.UI;
-using $rootnamespace$;
+using %NAMESPACE%;
 
-[assembly: Worker(typeof($worker_class$), typeof($worker_datattype$))]
-namespace $rootnamespace$
+[assembly: Worker(typeof(%WORKERCLASSNAME%), typeof(%WORKERDATATYPE%))]
+namespace %NAMESPACE%
 {
-    public class $worker_class$
+    public class %WORKERCLASSNAME%
     {
-$if$ ($worker_params_register$ == 1)
+$if$  (worker-params)
         [Context]
-        public $worker_params_class$ @params {
+        public %WORKERCLASSNAME%Params @params {
             get;
             set;
         }
 $endif$
-
-        // TODO -> Należy podmienić podany opis akcji na bardziej czytelny dla uzytkownika
-        [Action("$worker_class$/ToDo", Mode = ActionMode.SingleSession | ActionMode.ConfirmSave | ActionMode.Progress)]
+        // Szczegółowy opis : https://dok.enova.pl/programowanie/string-messageboxinformation,4292
+        [Action("%WORKERCLASSNAME%/ToDo", Mode = ActionMode.SingleSession | ActionMode.ConfirmSave | ActionMode.Progress)]
         public MessageBoxInformation ToDo() {
-$if$ ($worker_params_register$ == 0)
+$if$ (!worker-params)
             return new MessageBoxInformation("Czy wykonać operację ?") {
                 Text = "Opis operacji",
                 YesHandler = () => "Operacja została zakończona",
                 NoHandler = () => "Operacja przerwana"
             };
 $endif$
-$if$ ($worker_params_register$ == 1)
+$if$ (worker-params)
             return new MessageBoxInformation("Potwierdzasz wykonanie operacji ?") {
                 Text = "Opis operacji",
                 YesHandler = () => {
@@ -41,14 +40,12 @@ $endif$
         }
     }
 
-$if$ ($worker_params_register$ == 1)
-    public class $worker_params_class$ : ContextBase
+$if$ (worker-params)
+    public class %WORKERCLASSNAME%Params : ContextBase
     {
-        public $worker_params_class$(Context context) : base(context)
+        public %WORKERCLASSNAME%Params(Context context) : base(context)
         {
         }
-
-        // TODO -> Poniższy parametr dodany dla celów poglądowych. Należy usunąć.
         public string Parametr1 { get; set; }
     }
 $endif$
