@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <!-- Zawiera informację nagłówkową pliku XML oraz informację o użytym kodowaniu znaków. -->
 <module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.enova.pl/schema/business_struct.xsd" xsi:schemaLocation="http://www.enova.pl/schema/ http://www.enova.pl/schema/business_struct.xsd"
- name="$safeitemrootname$" namespace="$rootnamespace$.$safeitemrootname$" versionName="$safeitemrootname$" versionNumber="1">
+ name="%MODULENAME%" namespace="%NAMESPACE%.%MODULENAME%" versionName="%MODULENAME%" versionNumber="1">
   <!-- 
   Główny element deklarujący nagłówek modułu. 
   
@@ -14,13 +14,16 @@
   versionNumber - atrybut versionNumber określa numer wersji o danej nazwie. Liczba ta powinna być zwiększana zawsze, gdy dokonujemy zmian w module, który został opublikowany publicznie i konieczna będzie konwersja. Taka sama wartość atrybutu versionName może być przypisany wielu modułom. Ale wystarczy, że tylko jeden z nich będzie określał numer wersji atrybutem versionNumber. 
   -->
 
-  <import>../..</import>
-  <!-- 
-  Ten atrybut deklaruje folder, w którym będą poszukiwane pozostałe pliki business.xml.
-  Wczytywane są wszystkie pliki ze wskazanego foldera oraz folderów podrzędnych.
-  W tym przypadku uwzględnione zostaną wszystkie deklaracje business.xml w folderze nadrzędnym i jego podrzędnych.
-  -->
-
+	<!--
+	Przykład tabeli z przykładowymi kolumnami
+	Szczegółowe inforamcje https://dok.enova.pl/programowanie/business-xml,4368
+	<table name="Obiekt" tablename="Obiekty" ...="" >
+		<col name="Index" type="int" modifier="public" ...="" />
+		<col name="Kolumna1" type="int" modifier="public" ...="" />
+		<col name="Kolumna2" type="string" modifier="public" ...="" />
+		
+	</table>
+	-->
   <!-- 
   Określa namespaces Microsoft.NET Framework, których identyfikatory są używane przez ten moduł. W tym przypadku pole Dokument odnosi się do obiektu modułu handel DokumentHandlowy. Możliwe jest użycie wielu elementów using.
   -->

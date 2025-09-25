@@ -11,33 +11,60 @@
     "language": "C#",
     "type": "item"
   },
-  "sourceName": "$fileinputname$",
-  "preferNameDirectory": true,
+  "preferNameDirectory": false,
   "symbols": {
-    "safe-item-root-name": {
-      "type": "bind",
-      "binding": "name",
-      "replaces": "$safeitemrootname$",
-      "dataType": "string"
-    },
     "default-namespace": {
       "type": "bind",
-      "binding": "name",
-      "replaces": "$defaultnamespace$",
-      "dataType": "string"
+      "binding": "msbuild:RootNamespace",
+      "replaces": "%NAMESPACE%",
+      "description": "Przestrzeń nazw dla workera",
+      "msbuild": "RootNamespace"
     },
-    "root-namespace": {
-      "type": "bind",
-      "binding": "name",
-      "replaces": "$rootnamespace$",
-      "dataType": "string"
+    "class-name": {
+      "type": "parameter",
+      "dataType": "string",
+      "description": "Nazwa tworzonej klasy, której zakladke wyswietlamy"
     },
-    "pageform-xml": {
-      "type": "derived",
-      "valueSource": "name",
-      "valueTransform": "AddPageFormXmlSuffix",
-      "replaces": "$pageform_xml$",
-      "dataType": "string"
+    "computed-name": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "class-name",
+        "fallbackVariableName": "default-namespace"
+      }
+    },
+    "safe-computed-name": {
+      "type": "generated",
+      "generator": "regex",
+      "parameters": {
+        "source": "computed-name",
+        "steps": [
+          {
+            "regex": "^(.*?)\\..*",
+            "replacement": "$1"
+          }
+        ]
+      }
+    },
+    "default-class": {
+      "type": "generated",
+      "generator": "join",
+      "replaces": "%CLASSNAME%",
+      "fileRename": "Class",
+      "parameters": {
+        "symbols": [
+          {
+            "type": "ref",
+            "value": "safe-computed-name"
+          },
+          {
+            "type": "const",
+            "value": "Class"
+          }
+        ],
+        "separator": "",
+        "removeEmptyValues": true
+      }
     },
     "pageform-register-folder": {
       "type": "parameter",
@@ -47,60 +74,27 @@
     },
     "pageform-caption": {
       "type": "parameter",
-      "replaces": "$pageform_caption$",
+      "replaces": "%PAGEFORMCAPTION%",
       "dataType": "string",
-      "description": "Tytuł zakładki (Caption Html)",
-      "isRequired": true
+      "defaultValue": "MyPage",
+      "description": "Tytuł zakładki (Caption Html)"
     },
     "pageform-pagename": {
       "type": "parameter",
-      "replaces": "$pageform_pagename$",
+      "replaces": "%PAGEFORMPAGENAME%",
       "dataType": "string",
       "description": "Nazwa zakładki (Name)",
-      "isRequired": true
-    },
-    "pageform-datatype": {
-      "type": "parameter",
-      "replaces": "$pageform_datattype$",
-      "dataType": "string",
-      "description": "Typ danych (DataType)",
-      "isRequired": true
+      "fileRename": "Ogolne",
+      "defaultValue": "Ogolne"
     },
     "pageform-priority": {
       "type": "parameter",
-      "replaces": "$pageform_priority$",
+      "replaces": "%PAGEFORMPRIORITY%",
       "dataType": "string",
       "description": "Priorytet (Priority)",
       "defaultValue": "100000"
-    },
-    "$pageform_registerfolder$": {
-      "type": "generated",
-      "generator": "switch",
-      "dataType": "int",
-      "parameters": {
-        "cases": [
-          {
-            "condition": "pageform-register-folder",
-            "value": "1"
-          },
-          {
-            "condition": "!pageform-register-folder",
-            "value": "0"
-          }
-        ]
-      }
     }
   },
-  "defaultName": "MyPageForm",
-  "sources": [
-    {
-      "include": [ "*.cs", "*.xml" ],
-      "rename": {
-        "Class.cs": "$fileinputname$.cs",
-        "Page.pageform.xml": "$fileinputname$.ogolne.pageform.xml"
-      }
-    }
-  ],
   "SpecialCustomOperations": {
     "*": {
       "operations": [
@@ -114,11 +108,9 @@
       ]
     }
   },
-  "forms": {
-    "AddPageFormXmlSuffix": {
-      "identifier": "replace",
-      "replacement": ".ogolne.pageform.xml",
-      "pattern": "$"
+  "sources": [
+    {
+      "include": [ "*.cs", "*.xml" ]
     }
-  }
+  ]
 }

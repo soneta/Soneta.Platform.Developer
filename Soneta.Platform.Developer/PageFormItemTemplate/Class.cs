@@ -2,26 +2,26 @@
 using Soneta.Business.App;
 $if$ ($pageform_registerfolder$ == 1)
 using Soneta.Business.UI;$endif$
-using $rootnamespace$;
+using %NAMESPACE%;
 
-$if$ ($pageform_registerfolder$ == 0)
+$if$ (!pageform-register-folder)
 // Sposób w jaki należy zarejestrować extender, który później zostanie użyty w interfejsie.
-[assembly: Worker(typeof($safeitemrootname$))]$endif$
+[assembly: Worker(typeof(%CLASSNAME%))]$endif$
 
-$if$ ($pageform_registerfolder$ == 1)
+$if$ (pageform-register-folder)
 // Sposób w jaki należy zarejestrować page który będzie wyswietlany jako folderw interfejsie.
-[assembly: FolderView("$defaultnamespace$/$safeitemrootname$",
-    Priority = $pageform_priority$,
-    Description = "$pageform_caption$",
-    ObjectType = typeof($safeitemrootname$),
-    ObjectPage = "$pageform_xml$",
+[assembly: FolderView("%NAMESPACE%/%CLASSNAME%",
+    Priority = %PAGEFORMPRIORITY%,
+    Description = "%PAGEFORMCAPTION%",
+    ObjectType = typeof(%CLASSNAME%),
+    ObjectPage = "%CLASSNAME%.%PAGEFORMPAGENAME%.pageform.xml",
     ReadOnlySession = false,
     ConfigSession = false
 )]$endif$
 
-namespace $rootnamespace$
+namespace %NAMESPACE%
 {
-	public class $safeitemrootname$
+	public class %CLASSNAME%
 	{
         [Context]
         public Session Session { get; set; }

@@ -1,27 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-$if$ ($pageform_registerfolder$ == 0)
+$if$ (!pageform-register-folder)
 <DataForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns="http://www.enova.pl/schema/form.xsd"
           xsi:schemaLocation="http://www.enova.pl/schema/ http://www.enova.pl/schema/form.xsd"
-          RightName="Page:$pageform_pagename$"
-          Priority="$pageform_priority$"
-          DataType="$pageform_datattype$">
-  <Page Name="$pageform_pagename$" CaptionHtml="$pageform_caption$" DataContext="{DataSource}">
+          RightName="Page:%PAGEFORMPAGENAME%"
+          Priority="%PAGEFORMPRIORITY%"
+          DataType="%CLASSNAME%">
+  <Page Name="%PAGEFORMPAGENAME%" CaptionHtml="%PAGEFORMCAPTION%" DataContext="{DataSource}">
     <Group>
-      <Label CaptionHtml="Hello $pageform_datattype$ !!!"/>
+      <Label CaptionHtml="Hello %CLASSNAME% !!!"/>
     </Group>
   </Page>
 </DataForm>$endif$
-$if$ ($pageform_registerfolder$ == 1)
+$if$ (pageform-register-folder)
 <DataForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         xmlns="http://www.enova.pl/schema/form.xsd"
           xsi:schemaLocation="http://www.enova.pl/schema/ http://www.enova.pl/schema/form.xsd"
-        Priority="$pageform_priority$">
-  <Page CaptionHtml="$pageform_caption$" DataContext="{DataSource}">
+        Priority="%PAGEFORMPRIORITY%">
+  <Page CaptionHtml="%PAGEFORMCAPTION%" DataContext="{DataSource}">
     <Group>
-      <Label CaptionHtml="Hello $safeitemrootname$ !!!"/>
+      <Label CaptionHtml="Hello %CLASSNAME% !!!"/>
     </Group>
   </Page>
 </DataForm>$endif$
