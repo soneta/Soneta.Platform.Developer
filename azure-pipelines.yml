@@ -1,20 +1,26 @@
 resources:
 - repo: self
 pool:
-  vmImage: 'windows-2022'
+  vmImage: 'ubuntu-latest'
 variables:
   configuration: Release
   name: Soneta.Platform.Developer
 steps:
-- task: MSBuild@1
-  displayName: Build
+- task: UseDotNet@2
+  displayName: Install dotnet SDK
   inputs:
-    solution: $(name)/$(name).sln
-    configuration: $(configuration)
-    msbuildArguments: '/r'
+    packageType: sdk
+    version: 8.0.404
+- task: DotNetCoreCLI@2
+  displayName: Build Solution Linux
+  inputs:
+    command: build
+    projects: $(name)/$(name).sln
+    arguments: 
+      -c $(configuration)
 - task: CopyFiles@2
   inputs:
-    contents: $(name)/$(name)/bin/$(configuration)/**/?(*.nupkg|*.vsix)
+    contents: $(name)/$(name)/bin/$(configuration)/**/?(*.nupkg)
     targetFolder: $(Build.ArtifactStagingDirectory)
     cleanTargetFolder: true
     flattenFolders: true
