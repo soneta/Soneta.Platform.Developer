@@ -69,10 +69,11 @@
       "condition": "(!noTest)",
       "include": [
         "SonetaAddonProject/SonetaAddonProject.csproj",
-        "SonetaAddonProject/Licence.txt"
+        "SonetaAddonProject/AwesomeAssertions.License.txt"
       ],
       "rename": {
-        "SonetaAddonProject": "SonetaAddon.Tests"
+        "SonetaAddonProject": "SonetaAddon.Tests",
+        "AwesomeAssertions.License.txt": "3rd Party Licenses/AwesomeAssertions.License.txt"
       }
     }
   ],
