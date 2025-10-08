@@ -24,24 +24,13 @@
       <Pack>true</Pack>
       <PackagePath>Soneta.Platform.Developer</PackagePath>
     </Content>
-    <Content Remove="..\SonetaAddon\SonetaAddonProject\config.template.config\dotnetcli.host.json" />
-    <Content Remove="..\SonetaAddon\SonetaAddonProject\config.template.config\template.json" />
-    <Content Remove="..\SonetaAddon\SonetaAddonProject\project.template.config\dotnetcli.host.json" />
-    <Content Remove="..\SonetaAddon\SonetaAddonProject\project.template.config\template.json" />
-    <Content Remove="..\SonetaAddon\SonetaAddonProject\SonetaAddonProject.Tests.csproj" />
-    <Content Remove="..\SonetaAddon\SonetaAddonProject\test.template.config\dotnetcli.host.json" />
-    <Content Remove="..\SonetaAddon\SonetaAddonProject\test.template.config\template.json" />
-    <Content Remove="..\SonetaAddon\SonetaAddonProject\ui.template.config\dotnetcli.host.json" />
-    <Content Remove="..\SonetaAddon\SonetaAddonProject\ui.template.config\template.json" />
     <Content Remove="@(ExcludeFromPackage)" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="soneta.png">
-      <IncludeInVSIX>true</IncludeInVSIX>
       <PackagePath></PackagePath>
     </Content>
     <Content Include="License.txt">
-      <IncludeInVSIX>true</IncludeInVSIX>
       <PackagePath></PackagePath>
     </Content>
   </ItemGroup>
@@ -53,47 +42,27 @@
   <ItemGroup>
     <ProjectReference Include="..\BusinessXml105ItemTemplate\BusinessXml105ItemTemplate.csproj">
       <Name>BusinessXml105ItemTemplate</Name>
-      <VSIXSubPath>ItemTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
     <ProjectReference Include="..\DashboardItemTemplate\DashboardItemTemplate.csproj">
       <Name>DashboardItemTemplate</Name>
-      <VSIXSubPath>ItemTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
-    </ProjectReference>
-    <ProjectReference Include="..\ItemTemplateWizard\ItemTemplateWizard.csproj">
-      <Name>ItemTemplateWizard</Name>
-      <VSIXSubPath>Assemblies</VSIXSubPath>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
-      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
     </ProjectReference>
     <ProjectReference Include="..\PageFormItemTemplate\PageFormItemTemplate.csproj">
       <Name>PageFormItemTemplate</Name>
-      <VSIXSubPath>ItemTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
     <ProjectReference Include="..\SonetaAddon\SonetaAddon.csproj">
       <Name>SonetaAddon</Name>
-      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
     <ProjectReference Include="..\ViewInfoItemTemplate\ViewInfoItemTemplate.csproj">
       <Name>ViewInfoItemTemplate</Name>
-      <VSIXSubPath>ItemTemplates</VSIXSubPath>
-      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3bBuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
-      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="..\WorkerItemTemplate\WorkerItemTemplate.csproj">
       <Name>WorkerItemTemplate</Name>
-      <VSIXSubPath>ItemTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
