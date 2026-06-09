@@ -18,10 +18,12 @@
 	Przykład tabeli z przykładowymi kolumnami
 	Szczegółowe inforamcje https://dok.enova.pl/programowanie/business-xml,4368
 	<table name="Obiekt" tablename="Obiekty" ...="" >
+		<key name="ByIndex" keyprimary="true" keyunique="true">
+          <keycol name="Index" />
+        </key>
 		<col name="Index" type="int" modifier="public" ...="" />
 		<col name="Kolumna1" type="int" modifier="public" ...="" />
 		<col name="Kolumna2" type="string" modifier="public" ...="" />
-		
 	</table>
 	-->
   <!-- 
